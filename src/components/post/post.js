@@ -1,4 +1,5 @@
 import postdata from "./postdata.js";
+import * as components from '../index.js'
 
 class NewPost extends HTMLElement {
    static get observedAttributes(){
@@ -25,6 +26,7 @@ class NewPost extends HTMLElement {
 
         postdata.forEach((postdata)=>{
             newpost += `
+            <new-prof profimage="${postdata.profilePic}" id="${postdata.id}" ></new-prof>
             <img src="${postdata.img}"></img>
            
             `
