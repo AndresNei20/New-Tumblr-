@@ -1,6 +1,6 @@
 export default [
     {
-        icon: "/img/home-icon-btn.png" 
+        icon: "../../../img/home-icon-btn.png" 
     },
     {
         icon: "../../../img/mail-btn.png" 
