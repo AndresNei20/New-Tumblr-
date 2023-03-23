@@ -15,7 +15,7 @@ class NewPost extends HTMLElement {
         this.render();
     }
 
-    connectedChangeCallback(propName, oldValue, newValue){
+    attributeChangedCallback(propName, oldValue, newValue){
         this[propName] = newValue;
         this.render()
     }
