@@ -47,7 +47,7 @@ class BtnList extends HTMLElement {
         this.shadowRoot.innerHTML += `
         <span class="icons-nav">
         ${btncontent}
-        <a href=""><img src = '../../../img/post.png'></a>
+        <button><img src = '../../../img/post.png'></button>
         </span>
         `
 
