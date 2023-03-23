@@ -23,8 +23,7 @@ class BtnList extends HTMLElement {
 
         imagedata.forEach((imagedata)=>{
             btncontent += `
-           
-            <a href=""><img src="${imagedata.icon}"></a>
+            <button><img src="${imagedata.icon}"></button>
            
             `
         })
@@ -48,7 +47,7 @@ class BtnList extends HTMLElement {
         this.shadowRoot.innerHTML += `
         <span class="icons-nav">
         ${btncontent}
-        <a href=""><img href="src","../../../img/post.png"></a>
+        <a href=""><img src = '../../../img/post.png'></a>
         </span>
         `
 

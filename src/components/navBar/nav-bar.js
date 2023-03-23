@@ -29,7 +29,7 @@ class NavBar extends HTMLElement{
         <nav id="navBack">
             <img class="logo" src="../../../img/tumblr-1.png">
             <input type="search" placeholder="search someone">
-          <btn-list></btn-list>
+            <btn-list></btn-list>
         </nav>
         `
         

@@ -1,17 +1,30 @@
 .icons-nav{
-    margin-left: 75%;
-    padding-left: 12em;
+    margin-top: 1%;
+    margin-left: 65%;
+    padding-left: 7em;
     display: flex;
     flex-direction: row;
     background-color: transparent;
-    width: 60%;
+    width: 65%;
+    height: 3em;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
 }
-
-.icons-nav img{
-    width: 60%;
+.icons-nav button{
+    background-color: transparent;
+    margin: 1%;
+    padding-left: 1%;
+    padding-right: 2%;
+    width: 30%;
     object-fit: contain;
+    border: none;
+    cursor: pointer;
+}
+.icons-nav img{
+    width: 100%;
+    height: 30%;
+    padding: 1%;
+    margin: 10%;
     
 }
 
