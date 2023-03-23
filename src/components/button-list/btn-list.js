@@ -13,7 +13,7 @@ class BtnList extends HTMLElement {
         this.render();
     }
 
-    connectedChangeCallback(propName, oldValue, newValue){
+    AttributeChangedCallback(propName, oldValue, newValue){
         this[propName] = newValue;
         this.render()
     }
@@ -21,9 +21,9 @@ class BtnList extends HTMLElement {
     render(){
         let btncontent = "";
 
-        imagedata.forEach((imagedata)=>{
+        imagedata.forEach((imagedata, index)=>{
             btncontent += `
-            <button><img src="${imagedata.icon}"></button>
+            <button id="${index}"><img src="${imagedata.icon}"></button>
            
             `
         })

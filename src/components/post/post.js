@@ -26,8 +26,8 @@ class NewPost extends HTMLElement {
 
         postdata.forEach((postdata)=>{
             newpost += `
-            <new-prof profimage="${postdata.profilePic}" id="${postdata.id}" ></new-prof>
-            <img src="${postdata.img}"></img>
+            <new-prof image ="${postdata.pic}" id="${postdata.id}" ></new-prof>
+            <img src="${postdata.img}"></img>    
            
             `
         })
