@@ -10,5 +10,9 @@ export default [
     },
     {
         icon: "../../../img/user-btn.png" 
+    },
+    {
+        icon: "../../../img/post.png"
     }
+
 ]

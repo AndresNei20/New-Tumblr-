@@ -1,3 +1,10 @@
+nav{position: fixed;}
+@media all and (max-width:500px){
+    nav{position: fixed;}
+    nav input {
+        display: none;
+    }
+}
 #navBack{
     display: flex;
     flex-direction: row;
@@ -15,4 +22,17 @@ nav input{
     width: 35%;
     height: 60%;  
       
+}
+
+btn-list{
+    width: 55%;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    margin-left: 3%;
+    
+}
+
+btn-lint button{
+    width: 100%;
 }

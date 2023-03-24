@@ -45,10 +45,9 @@ class BtnList extends HTMLElement {
         span.appendChild(a) */
 
         this.shadowRoot.innerHTML += `
-        <span class="icons-nav">
+        <div class="icons-nav">
         ${btncontent}
-        <button><img src = '../../../img/post.png'></button>
-        </span>
+        </div>
         `
 
     }
