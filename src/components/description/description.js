@@ -1,4 +1,4 @@
-
+import BtnAct from "../post/btn-actions/btn-act.js";
 class profileDes extends HTMLElement {
     static get observedAttributes(){
      return["description","hashtags"]

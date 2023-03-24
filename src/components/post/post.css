@@ -1,3 +1,8 @@
+new-des{
+    background-color: aqua;
+    min-width: 56.4%;
+    max-width: 56.4%;
+}
 .post {
     background-color: rgb(22, 22, 55);
     display: flex;
@@ -15,8 +20,12 @@
     
 }
 
+
 @media all and (max-width:410px){
     .post img{
         width:100% ;
+    }
+    new-des{
+        width: 3em;
     }
 }

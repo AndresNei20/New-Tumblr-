@@ -1,7 +1,14 @@
 nav{position: fixed;}
 @media all and (max-width:500px){
-    nav{position: fixed;}
+    nav{display: none}
     nav input {
+        display: none;
+    }
+    #navback{
+        display: none;
+        background-color: transparent;
+    }
+    btn-list{
         display: none;
     }
 }
