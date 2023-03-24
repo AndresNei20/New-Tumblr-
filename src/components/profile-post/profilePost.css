@@ -1,7 +1,6 @@
 .profile {
     background-color: rgb(255, 255, 255);
-    min-width: 54.8%;
-    max-width: 54.8%;
+    max-width: 54.6%;
     height: 10%;
     display: flex;
     flex-direction: row;
@@ -10,7 +9,7 @@
     align-items: center;
     margin-top: 5%;
     margin-bottom:0% ;
-    margin-left: 21.5%;
+    margin-left: 21.7%;
 }
 
 .profile img {
@@ -23,14 +22,13 @@
 }
 
 .profile p {
-    margin-left: 10px;
+    margin-left: 2%;
    
 
 }
 @media all and (max-width:410px){
     .profile {
         min-width: 100%;
-        max-width: 100%;
         margin-left: -2%;
     }
     

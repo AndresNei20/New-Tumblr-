@@ -1,7 +1,7 @@
 
 .profile {
     background-color: rgb(255, 255, 255);
-    width: 100%;
+    width: 54.8%;
     display: flex;
     flex-direction: column;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -10,13 +10,12 @@
     
 }
 
+
 .profile p {
     margin-left: 1%;
 }
 @media all and (max-width:410px){
     .profile{
         width: 24.5em;
-        margin-right: 20%;
-        margin-left: -39%;
     }
 }
