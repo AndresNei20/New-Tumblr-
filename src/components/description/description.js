@@ -21,6 +21,7 @@ class profileDes extends HTMLElement {
      render(){
         
          this.shadowRoot.innerHTML = `
+         <link rel="stylesheet" href="../src/components/description/description.css">
          <section class="profile">
          <p>${this.description}</p>
          <p>${this.hashtags}</p>

@@ -21,6 +21,7 @@ class profilePost extends HTMLElement {
     render(){
        
         this.shadowRoot.innerHTML = `
+        <link rel="stylesheet" href="../src/components/profile-post/profilePost.css">
         <section class="profile">
         <img src="${this.image}"></img>
         <p>${this.id}</p>
