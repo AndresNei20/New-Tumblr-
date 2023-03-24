@@ -12,3 +12,8 @@
 .profile p {
     margin-left: 1%;
 }
+@media all and (max-width:410px){
+    .profile{
+        width: 24.5em;
+    }
+}
