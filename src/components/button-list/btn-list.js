@@ -23,7 +23,7 @@ class BtnList extends HTMLElement {
 
         imagedata.forEach((imagedata, index)=>{
             btncontent += `
-            <button id="${index}"><img src="${imagedata.icon}"></button>
+            <button id="btn${index}"><img src="${imagedata.icon}"></button>
            
             `
         })
@@ -32,17 +32,6 @@ class BtnList extends HTMLElement {
         link.rel = 'stylesheet';
         link.href = '../src/components/button-list/btn-list.css';
         this.shadowRoot.appendChild(link)
-/* 
-        const imgPost = document.createElement('img');
-        imgPost.setAttribute("src","../../../img/post.png")
-
-
-        const span = document.createElement('span');
-        const a = document.createElement('a')
-        a.appendChild(imgPost)
-
-        span.appendChild(btncontent)
-        span.appendChild(a) */
 
         this.shadowRoot.innerHTML += `
         <div class="icons-nav">

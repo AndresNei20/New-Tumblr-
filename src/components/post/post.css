@@ -5,10 +5,18 @@
     align-items: center;
     justify-content: center;
     margin: 0 auto;
+    width: 100%;
+    padding-top: 8%;
     
 }
 
 .post img {
-   width: 704px;
+   width: 56.5%;
     
+}
+
+@media all and (max-width:410px){
+    .post img{
+        width:100% ;
+    }
 }

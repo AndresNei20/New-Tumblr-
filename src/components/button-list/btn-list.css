@@ -8,16 +8,41 @@
 }
 
 .icons-nav button{
-    width: 20%;
+    width: 15%;
     height: 90%;
 }
+@media all and (max-width:410px){
+    .icons-nav{
+        display:flex;
+        flex-direction: row;
+    }
+    #btn0{
+        order: 0;
+    }
+    #btn1{
+        order: 1;
+    }
+    #btn2{
+        order: 4;
+    }
+    #btn3{
+        order: 3;
+    }
+    #btn4{
+        order: 2;
+    }
+}
+
 
 button{
     align-content: center;
+    justify-content: center;
     background: transparent;
     border: none;
+    cursor: pointer;
 }
 
 button img{
-    width: 100%;
+    min-width: 80%;
+    max-width: 80%;
 }
