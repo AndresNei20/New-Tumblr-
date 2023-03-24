@@ -28,11 +28,13 @@ class NewPost extends HTMLElement {
             newpost += `
             <new-prof image ="${postdata.pic}" id="${postdata.id}" ></new-prof>
             <img src="${postdata.img}"></img>    
+            <new-des description ="${postdata.description}" hashtags="${postdata.hashtags}"></new-des>
            
             `
         })
          this.shadowRoot.innerHTML += `
-        <section class="photo">
+        <link rel="stylesheet" href="../src/components/post/post.css">
+        <section class="post">
         ${newpost}
         </section>
         `
