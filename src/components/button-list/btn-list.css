@@ -11,7 +11,7 @@
     width: 15%;
     height: 90%;
 }
-@media all and (max-width:410px){
+@media all and (max-width:415px){
     .icons-nav{
         display:flex;
         flex-direction: row;
@@ -31,6 +31,18 @@
     #btn4{
         order: 2;
     }
+    .icons-nav {
+        width: 100%;
+    }
+    btn-list{
+        width: 120%;
+        margin-left: -2%;
+        margin-right: 2%;
+    }
+    .icons-nav button{
+        width: 30em;
+    }
+
 }
 
 

@@ -21,6 +21,7 @@ class NewPost extends HTMLElement {
     }
 
     render(){
+        console.log("rendered");
        
         let newpost = "";
 

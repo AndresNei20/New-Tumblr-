@@ -1,5 +1,9 @@
 
 class profilePost extends HTMLElement {
+
+    image = ""
+    id = ""
+    
    static get observedAttributes(){
     return["image","id"]
    }
@@ -14,11 +18,12 @@ class profilePost extends HTMLElement {
     }
 
     attributeChangedCallback(propName, oldValue, newValue){
-        this[propName] = newValue;
+      this[propName] = newValue;
         this.render()
     }
-
+    
     render(){
+        console.log("re");
        
         this.shadowRoot.innerHTML = `
         <link rel="stylesheet" href="../src/components/profile-post/profilePost.css">
