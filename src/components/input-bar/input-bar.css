@@ -1,4 +1,44 @@
 #containerbtn{
     display: flex;
     flex-direction: row;
+    padding-top: 3%;
+    width: 56.4%;
+    margin-left: 23%;
+    margin-bottom: 3%;
+
+}
+#profpic{
+    width: 10%;
+    object-fit: contain;
+    margin-right: 1%;
+    margin-bottom: 8%;
+    border-radius: 50%;
+    margin-left: -12%;
+}
+#btn_box{
+    display: flex;
+    width: 80%;
+    height: 10%;
+    background-color: white;
+    justify-content: space-evenly;
+    text-align: center;
+}
+div{
+    width: 13%;
+    margin-left: 7%;
+    padding-right: 2%;
+    border-radius: 16px;
+
+}
+button{
+    width: 40%;
+}
+.options{
+    width: 100%;
+}
+
+@media all and (max-width:500px){
+    #containerbtn{
+        display: none;
+    }
 }

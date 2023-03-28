@@ -36,6 +36,7 @@ class NewPost extends HTMLElement {
          this.shadowRoot.innerHTML += `
         <link rel="stylesheet" href="../src/components/post/post.css">
         <section class="post">
+        <input-bar></input-bar>
         ${newpost}
         </section>
         `

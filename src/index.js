@@ -12,8 +12,8 @@ class AppContainer extends HTMLElement{
     render(){
      /*    const figure = document.createElement('figure');
         this.shadowRoot.appendChild(figure); */
-        this.shadowRoot.innerHTML = `<nav-bar></nav-bar>
-        
+        this.shadowRoot.innerHTML = `
+        <nav-bar></nav-bar>
         <new-post> </new-post>
         
         `

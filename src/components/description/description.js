@@ -25,6 +25,7 @@ class profileDes extends HTMLElement {
          <section class="profile">
          <p>${this.description}</p>
          <p>${this.hashtags}</p>
+         <p>0 likes</p>
          <btn-act id="prueba"></btn-act>
          </section>
          `
