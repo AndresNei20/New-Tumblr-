@@ -27,12 +27,13 @@ class BtnAct extends HTMLElement {
             `
         })
 
-        const link = document.createElement('link')
+/*         const link = document.createElement('link')
         link.rel = 'stylesheet';
         link.href = '../src/components/post/btn-actions/btn-act.css';
         this.shadowRoot.appendChild(link)
-        
+         */
         this.shadowRoot.innerHTML = `
+        <link rel="stylesheet" href="../src/components/post/btn-actions/btn-act.css">
         <div class="icons-act">
         ${btnicons}
         </div>

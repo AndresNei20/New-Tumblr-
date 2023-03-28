@@ -1,6 +1,8 @@
 nav{position: fixed;}
 @media all and (max-width:500px){
-    nav{display: none}
+    nav{
+        top: 97%;
+    }
     nav input {
         display: none;
     }
@@ -12,7 +14,7 @@ nav{position: fixed;}
     .logo{
         display: none;
     }
-    btn-list button{
+    btn-list {
         width: 40em;
     }
 }
@@ -41,7 +43,8 @@ btn-list{
     height: 40px;
     display: flex;
     flex-direction: row;
-    margin-left: 3%;
+    margin-left: 15%;
+    margin-top: 1%;
     
 }
 

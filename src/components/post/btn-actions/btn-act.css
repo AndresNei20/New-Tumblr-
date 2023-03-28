@@ -1,0 +1,16 @@
+.icons-act{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+
+}
+button{
+    width: 7%;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 1%;
+}
+img{
+    width: 100%;
+}
