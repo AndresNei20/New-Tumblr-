@@ -31,4 +31,7 @@ new-prof{
     new-des{
         width: 3em;
     }
+    new-prof{
+        width: 100%;
+    }
 }
