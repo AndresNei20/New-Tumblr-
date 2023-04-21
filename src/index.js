@@ -1,4 +1,4 @@
-import * as components from './components/index.js'
+import * as components from './components/export.js'
 class AppContainer extends HTMLElement{
     constructor(){
         super();
@@ -10,8 +10,7 @@ class AppContainer extends HTMLElement{
     }
 
     render(){
-     /*    const figure = document.createElement('figure');
-        this.shadowRoot.appendChild(figure); */
+
         this.shadowRoot.innerHTML = `
         <nav-bar></nav-bar>
         <new-post> </new-post>

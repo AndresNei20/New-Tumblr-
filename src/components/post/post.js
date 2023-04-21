@@ -1,5 +1,5 @@
 import postdata from "./postdata.js";
-import * as components from '../index.js'
+import * as components from '../export.js'
 
 class NewPost extends HTMLElement {
    static get observedAttributes(){
