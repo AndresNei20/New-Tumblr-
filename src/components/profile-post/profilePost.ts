@@ -8,7 +8,7 @@ class profilePost extends HTMLElement {
     uid?:string = "";
 
    static get observedAttributes(){
-    return["image","id"]
+    return["image","uid"]
    }
 
     constructor(){
