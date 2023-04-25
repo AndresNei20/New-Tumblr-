@@ -1,9 +1,12 @@
 
+export enum AttributePp{
+    "image" = "image",
+    "uid" = "uid"
+}
 class profilePost extends HTMLElement {
+    image?:string ="";
+    uid?:string = "";
 
-    image = ""
-    id = ""
-    
    static get observedAttributes(){
     return["image","id"]
    }
@@ -17,15 +20,17 @@ class profilePost extends HTMLElement {
         this.render();
     }
 
-    attributeChangedCallback(propName, oldValue, newValue){
-      this[propName] = newValue;
-        this.render()
+    attributeChangedCallback(propName: AttributePp, oldValue: string | undefined, newValue: string | undefined){
+        if (propName===propName) {
+            this[propName] = newValue
+                
+        }
     }
     
     render(){
         console.log("re");
        
-        this.shadowRoot.innerHTML = `
+        if(this.shadowRoot)this.shadowRoot.innerHTML = `
         <link rel="stylesheet" href="../src/components/profile-post/profilePost.css">
         <section class="profile">
         <img src="${this.image}"></img>

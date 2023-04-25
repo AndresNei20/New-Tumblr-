@@ -1,5 +1,11 @@
-import BtnAct from "../post/btn-actions/btn-act.js";
+import BtnAct from "../post/btn-actions/btn-act";
+export enum AttributeDesc{
+    "description" = "description",
+    "hashtags" = "hashtags"
+}
 class profileDes extends HTMLElement {
+    description?: string;
+    hashtags?: string;
     static get observedAttributes(){
      return["description","hashtags"]
     }
@@ -13,13 +19,17 @@ class profileDes extends HTMLElement {
          this.render();
      }
  
-     attributeChangedCallback(propName, oldValue, newValue){
-         this[propName] = newValue;
-         this.render()
+     attributeChangedCallback(propName: AttributeDesc, oldValue: string | undefined, newValue: string | undefined){
+        switch (propName) {
+            default:
+             this[propName] = newValue;
+                break;
+        }
+
      }
  
      render(){
-        
+        if(this.shadowRoot) 
          this.shadowRoot.innerHTML = `
          <link rel="stylesheet" href="../src/components/description/description.css">
          <section class="profile">

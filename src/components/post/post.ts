@@ -1,7 +1,10 @@
-import postdata from "./postdata.js";
-import * as components from '../export.js'
-
+import postdata from "./postdata";
+import * as components from '../export'
+export enum AttributeImg{
+    "image" = "image"
+}
 class NewPost extends HTMLElement {
+    image?: string
    static get observedAttributes(){
     return["image"]
    }
@@ -15,15 +18,21 @@ class NewPost extends HTMLElement {
         this.render();
     }
 
-    attributeChangedCallback(propName, oldValue, newValue){
-        this[propName] = newValue;
-        this.render()
+    attributeChangedCallback(propName: AttributeImg, oldValue: string | undefined, newValue: string | undefined){
+        switch (propName) {
+            default:
+            this[propName] = newValue;
+                break;
+        }
+        
     }
 
     render(){
         console.log("rendered");
        
         let newpost = "";
+
+        
 
         postdata.forEach((postdata)=>{
             newpost += `
@@ -33,7 +42,7 @@ class NewPost extends HTMLElement {
            
             `
         })
-         this.shadowRoot.innerHTML += `
+         if(this.shadowRoot)this.shadowRoot.innerHTML += `
         <link rel="stylesheet" href="../src/components/post/post.css">
         <section class="post">
         <input-bar></input-bar>

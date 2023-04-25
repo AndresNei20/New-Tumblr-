@@ -1,7 +1,11 @@
-import dataicons from "./dataicons.js";
+import dataicons from "./dataicons";
+export enum AttributeInpBar{
+    "dataicons" = "dataicons"
+}
 class InputBar extends HTMLElement {
+    dataicons?:string
     static get observedAttributes(){
-     return["dataicons","index"]
+     return["dataicons"]
     }
  
      constructor(){
@@ -13,14 +17,14 @@ class InputBar extends HTMLElement {
          this.render();
      }
  
-    attributeChangedCallback(propName, oldValue, newValue){
+    attributeChangedCallback(propName: AttributeInpBar, oldValue: string | undefined, newValue: string |undefined){
          this[propName] = newValue;
          this.render()
      }
      render(){
         let inputscont = "";
 
-        dataicons.forEach((dataicons,index)=>{
+        dataicons.forEach((dataicons,index: number)=>{
             inputscont += `
            <div id="btn-box>
             <button id="inp${index}"><img class="options" src="${dataicons.icon}"></button>
@@ -28,7 +32,7 @@ class InputBar extends HTMLElement {
             </div>
             `})
 
-            this.shadowRoot.innerHTML = `
+            if(this.shadowRoot)this.shadowRoot.innerHTML = `
             <link rel="stylesheet" href="../src/components/input-bar/input-bar.css">
             <section id="containerbtn">
                 <img id="profpic" src="https://api.time.com/wp-content/uploads/2014/11/140372563.jpg?quality=85&w=3780">

@@ -1,6 +1,9 @@
 import datalikes from "./datalikes";
+export enum AttributeLikes{
+    "likes" = "likes"
+}
 class LikeNote extends HTMLElement {
-    likes = "";
+    likes?:any
     static get observedAttributes(){
     return["likes"]
    }
@@ -14,20 +17,24 @@ class LikeNote extends HTMLElement {
         this.render();
     }
 
-    attributeChangedCallback(propName, oldValue, newValue){
-        this[propName] = newValue;
-        this.render()
+    attributeChangedCallback(propName: AttributeLikes, oldValue: string | undefined, newValue: string | undefined){
+       switch (propName) {
+        default:this[propName] = newValue;
+            break;
+       }
+
+
     }
 
     render(){
         const link = document.createElement('link')
         link.rel = 'stylesheet';
         link.href = '../src/components/like-note/like-note.css';
-        this.shadowRoot.appendChild(link)
+        this.shadowRoot?.appendChild(link)
 
-        this.shadowRoot.innerHTML += `
+        if(this.shadowRoot)this.shadowRoot.innerHTML += `
         <div class="like-box">
-        <p>${datalikes.likes}</p>
+        <p>15</p>
         </div>
         `
 

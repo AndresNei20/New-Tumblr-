@@ -1,5 +1,9 @@
-import BtnList from "../button-list/btn-list.js";
+import BtnList from "../button-list/btn-list";
+export enum AttributeBtn{
+    "button" = "button"
+}
 class NavBar extends HTMLElement{
+    button?:string
     static get observedAttributes(){
         return ["button"]
     }
@@ -13,9 +17,11 @@ class NavBar extends HTMLElement{
         this.render();
     }
 
-    connectedChangeCallback(propName, oldValue, newValue){
-        this[propName] = newValue;
-        this.render();
+    connectedChangeCallback(propName: AttributeBtn, oldValue: string | undefined, newValue: string | undefined){
+        switch (propName) {
+            default:this[propName] = newValue
+                break;
+        }
     }
 
     render(){
@@ -23,9 +29,9 @@ class NavBar extends HTMLElement{
         link.rel = "stylesheet"
         link.href = "../src/components/navBar/nav-bar.css"
         
-        this.shadowRoot.appendChild(link)
+        this.shadowRoot?.appendChild(link)
 
-        this.shadowRoot.innerHTML += `
+        if(this.shadowRoot)this.shadowRoot.innerHTML += `
         <nav id="navBack">
             <img class="logo" src="../../../img/tumblr-1.png">
             <input type="search" placeholder="search someone">

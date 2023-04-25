@@ -1,7 +1,12 @@
 import othericon from "./othericon";
+
+export enum AttributeBtnAct{
+    "icon" = "icon",
+}
 class BtnAct extends HTMLElement {
+    icon?: string
    static get observedAttributes(){
-    return["icon", "index"]
+    return["icon"]
    }
 
     constructor(){
@@ -13,16 +18,19 @@ class BtnAct extends HTMLElement {
         this.render();
     }
 
-    AttributeChangedCallback(propName, oldValue, newValue){
-        this[propName] = newValue;
-        this.render()
+    AttributeChangedCallback(propName: AttributeBtnAct, oldValue: string | undefined, newValue: string | undefined){
+        switch (propName) {
+            default:
+                this[propName] = newValue;
+                break;
+        }
     }
 
     render(){
-        let btnicons = "";
+        let btnIcons = "";
 
-        othericon.forEach((othericon, index)=>{
-            btnicons += `
+        othericon.forEach((othericon, index: number)=>{
+            btnIcons += `
             <button id="btn${index}"><img src="${othericon.icon}"></button>
             `
         })
@@ -32,10 +40,10 @@ class BtnAct extends HTMLElement {
         link.href = '../src/components/post/btn-actions/btn-act.css';
         this.shadowRoot.appendChild(link)
          */
-        this.shadowRoot.innerHTML = `
+        if(this.shadowRoot)this.shadowRoot.innerHTML = `
         <link rel="stylesheet" href="../src/components/post/btn-actions/btn-act.css">
         <div class="icons-act">
-        ${btnicons}
+        ${btnIcons}
         </div>
         `
 
