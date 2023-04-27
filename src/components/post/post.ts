@@ -1,5 +1,8 @@
-import postdata from "./postdata";
+import ApiPostData from '../../services/ApiPostData';
 import * as components from '../export'
+
+console.log(ApiPostData);
+
 export enum AttributeImg{
     "image" = "image"
 }
@@ -34,14 +37,15 @@ class NewPost extends HTMLElement {
 
         
 
-        postdata.forEach((postdata)=>{
-            newpost += `
-            <new-prof image ="${postdata.pic}" id="${postdata.id}" ></new-prof>
-            <img src="${postdata.img}"></img>    
-            <new-des description ="${postdata.description}" hashtags="${postdata.hashtags}"></new-des>
+        // ApiPostData.forEach((postdata: any)=>{
+        //     console.log(postdata);
+        //     newpost += `
+        //     <new-prof image ="${postdata.pic}" id="${postdata.id}" ></new-prof>
+        //     <img src="${postdata.img}"></img>    
+        //     <new-des description ="${postdata.description}" hashtags="${postdata.hashtags}"></new-des>
            
-            `
-        })
+        //     `
+        // })
          if(this.shadowRoot)this.shadowRoot.innerHTML += `
         <link rel="stylesheet" href="../src/components/post/post.css">
         <section class="post">

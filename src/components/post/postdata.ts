@@ -1,4 +1,6 @@
-export default [
+import {default as postData } from "../../types/postData";
+
+export const postdata: postData[] = [
     {
         pic: "https://api.time.com/wp-content/uploads/2014/11/140372563.jpg?quality=85&w=3780",
         id : "Lolitofernandez69",
