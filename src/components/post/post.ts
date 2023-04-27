@@ -1,7 +1,7 @@
 import ApiPostData from '../../services/ApiPostData';
 import * as components from '../export'
 
-console.log(ApiPostData);
+console.log (await ApiPostData.get());
 
 export enum AttributeImg{
     "image" = "image"
@@ -36,7 +36,7 @@ class NewPost extends HTMLElement {
         let newpost = "";
 
         
-
+        //Esto se hara como lo que hay en el 17_globalState en el Dashboard
         // ApiPostData.forEach((postdata: any)=>{
         //     console.log(postdata);
         //     newpost += `

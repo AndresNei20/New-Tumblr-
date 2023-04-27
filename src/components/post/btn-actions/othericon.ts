@@ -1,4 +1,6 @@
-export default [
+import otherIconData from "../../../types/otherIconData"
+
+export const OtherIconData: otherIconData[] = [
     {
         icon: "../../../img/share.png" 
     },
