@@ -1,3 +1,5 @@
+import { addObserver } from "../../store";
+
 
 export enum AttributePp{
     "image" = "image",
@@ -14,6 +16,7 @@ class profilePost extends HTMLElement {
     constructor(){
         super();
         this.attachShadow({mode:'open'})
+        addObserver(this)
     }
 
     connectedCallback(){

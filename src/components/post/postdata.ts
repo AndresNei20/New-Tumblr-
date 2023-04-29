@@ -29,11 +29,5 @@ export const postdata: postData[] = [
         description: "Spiderman",
         hashtags : "#marvel #art"
     },
-    {
-        pic:"https://i.pinimg.com/736x/25/78/61/25786134576ce0344893b33a051160b1.jpg",
-        id: "KiraisQueen",
-        img:"https://cdn.domestika.org/c_fit,dpr_auto,f_auto,t_base_params,w_820/v1596833467/content-items/005/440/308/00F4D0F7-71EC-401E-9E1D-0A87DDEEBF67-original.jpeg?1596833467",
-        description: "Spiderman",
-        hashtags : "#marvel #art"
-    }
+
 ]
