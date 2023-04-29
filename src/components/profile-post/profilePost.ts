@@ -1,4 +1,4 @@
-import { addObserver } from "../../store";
+import { addObserver } from "../../store/index";
 
 
 export enum AttributePp{
