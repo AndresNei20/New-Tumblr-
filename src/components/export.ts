@@ -6,3 +6,4 @@ export {default as profileDes} from './description/description'
 export {default as InputBar} from './input-bar/input-bar'
 export {default as Login} from "../screens/login/login"
 export {default as Signup} from "../screens/signup/signup"
+export {default as MyInput} from './input/input'
