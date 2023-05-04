@@ -9,6 +9,7 @@ export let  emptyState: AppState = {
         birthday: "",
     },
     postData: [], 
+    newPost: [],
 }
 
 let observers: observer[] = [];

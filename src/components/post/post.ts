@@ -2,7 +2,7 @@ import ApiPostData from '../../services/ApiPostData';
 import { addObserver, dispatch, emptyState } from '../../store';
 import { getPosts } from '../../store/actions';
 import { PostActions } from '../../types/store';
-import * as components from '../export'
+import '../../components/export'
 
 console.log (await ApiPostData.get());
 

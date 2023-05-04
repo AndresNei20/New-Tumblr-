@@ -9,7 +9,8 @@ export type AppState = {
         password: string,
         birthday: string,
     },
-       postData : postData []
+       postData : postData [],
+       newPost: postData[]
 }
 
 export enum AuthActions{

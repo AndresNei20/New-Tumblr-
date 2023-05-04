@@ -23,9 +23,9 @@ switch (action) {
             case PostActions.ADD_POST:
                 return{
                     ...currentState,
-                        postData: [
+                        newPost: [
                             payload,
-                            ...currentState.postData
+                            ...currentState.newPost
                         ]
             }
             case PostActions.GET:
