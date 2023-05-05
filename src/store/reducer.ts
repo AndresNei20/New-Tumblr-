@@ -1,4 +1,4 @@
-import { Actions, AppState, AuthActions, PostActions } from "../types/store";
+import { Actions, AppState, AuthActions, NavigationActions, PostActions } from "../types/store";
 
 
 export const reducer = (currentAction: Actions, currentState: AppState): AppState => {
@@ -41,6 +41,11 @@ switch (action) {
 
                     //we need to know how to delete something idk
                 }
+                case NavigationActions.NAVIGATE:
+                    return{
+                        ...currentState,
+                        screen: payload,
+                    }
 
 
 

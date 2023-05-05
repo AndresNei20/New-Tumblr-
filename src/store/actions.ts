@@ -1,8 +1,14 @@
 import { postdata } from "../components/post/postdata"
 import ApiPostData from "../services/ApiPostData"
-import { AuthActions, LogInAction, LogOutAction, PostActions, AddPostAction, GetPostAction } from "../types/store"
+import { AuthActions, LogInAction, LogOutAction, PostActions, AddPostAction, GetPostAction, NavigateAction, NavigationActions } from "../types/store"
+import { Screens } from "../types/navigation"
 
-
+export const navigate = (screen: Screens): NavigateAction =>{
+    return{
+        action: NavigationActions.NAVIGATE,
+        payload: screen,
+    }
+}
 
 export const logOut = (): LogOutAction => {
     return {

@@ -1,4 +1,5 @@
 import postData from "./postData";
+import { Screens } from "./navigation";
 
 export type observer = ({render: () => void} & HTMLElement);
 
@@ -10,7 +11,12 @@ export type AppState = {
         birthday: string,
     },
        postData : postData [],
-       newPost: postData[]
+       newPost: postData[],
+       screen: Screens; 
+}
+
+export enum NavigationActions{
+    "NAVIGATE" = "NAVIGATE"
 }
 
 export enum AuthActions{
@@ -49,4 +55,9 @@ export interface DeletePostAction{
     payload: void //idk if this gonna work...
 }
 
-export type Actions = LogInAction | LogOutAction | AddPostAction | GetPostAction | DeletePostAction
+export interface NavigateAction{
+    action:NavigationActions.NAVIGATE ,
+    payload: Screens
+}
+
+export type Actions = LogInAction | LogOutAction | AddPostAction | GetPostAction | DeletePostAction | NavigateAction
