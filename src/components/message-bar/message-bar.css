@@ -1,0 +1,28 @@
+#containerbtn{
+    display: flex;
+    flex-direction: row;
+    padding-top: 3%;
+    width: 60%;
+    margin-left: 23%;
+    margin-bottom: 3%;
+
+}
+#button {
+    width: 20%;
+    margin-top: 4.6em;
+    margin-left: 1%;
+    margin-right: 1%;
+    height: 3.2em;
+    border: none;
+    border-radius: 7px;
+    color: black;
+    background-color: white;
+}
+
+
+
+@media all and (max-width:500px){
+    #containerbtn{
+        display: none;
+    }
+}
