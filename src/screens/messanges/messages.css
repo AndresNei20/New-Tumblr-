@@ -1,0 +1,37 @@
+#conversation {
+    
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 200%;
+    background-color:  #23144E;
+
+}
+#box{
+    margin-bottom: 4%;
+  
+    
+}
+
+#whole {
+    background-color: #23144E;
+    width: 100%;
+    left: 0;
+    top: 0;
+  
+    
+    
+}
+
+#row{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+#sidemenu {
+  
+    width: 50%;
+    background: #555977;
+}
+

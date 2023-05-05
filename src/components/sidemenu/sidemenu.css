@@ -1,0 +1,43 @@
+
+
+#whole {
+
+width: 100%;
+margin-top: 4.6em;
+display: flex;
+flex-direction: column;
+color: white;
+background: #555977;
+
+
+}
+
+#button{
+margin-top: 4.6em;
+align-items: center;
+border: none;
+margin-left: 10%;
+margin-top: 2%;
+width: 80%;
+height: 5%;
+color: aliceblue;
+
+
+background: #23144E;
+border-radius: 9px;
+
+}
+
+
+h3{
+    color: white;
+    margin-left: 3%;
+
+}
+
+h3:hover{
+    color: #54D6FF;
+    
+
+}
+

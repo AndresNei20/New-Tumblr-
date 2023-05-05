@@ -7,3 +7,7 @@ export {default as InputBar} from './input-bar/input-bar'
 export {default as Login} from "../screens/login/login"
 export {default as Signup} from "../screens/signup/signup"
 export {default as Forms} from './forms/forms'
+export {default as MessangerScreen} from "../screens/messanges/messages"
+export {default as MssgInputBar} from "./message-bar/message-bar"
+export {default as MssgBox} from "./mssgbox/mssg"
+export {default as SideMenu} from "./sidemenu/sidemenu"

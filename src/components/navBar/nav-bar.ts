@@ -34,7 +34,7 @@ class NavBar extends HTMLElement{
         if(this.shadowRoot)this.shadowRoot.innerHTML += `
         <nav id="navBack">
             <img class="logo" src="../../../img/tumblr-1.png">
-            <input type="search" placeholder="search someone">
+            <input type="search" id="search" placeholder="search someone">
             <btn-list></btn-list>
         </nav>
         `

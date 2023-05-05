@@ -16,18 +16,22 @@ class AppContainer extends HTMLElement{
     render(){
 
         if(this.shadowRoot)
-        this.shadowRoot.innerHTML = `
-        <nav-bar></nav-bar>
-        <new-post> </new-post>  
-        `
-        const forms = this.ownerDocument.createElement('app-form')
-        this.shadowRoot?.appendChild(forms)
+        this.shadowRoot.innerHTML = 
         
-        const btnPost = this.shadowRoot?.getElementById("btn4");
-        if(btnPost){ btnPost.addEventListener("click", (event) => {
-            event.preventDefault();
-            console.log("hola, funciono")
-          });}
+        `
+        <messanges-screen></messanges-screen>
+        
+        `
+        // <nav-bar></nav-bar>
+        // <new-post> </new-post>  
+        // const forms = this.ownerDocument.createElement('app-form')
+        // this.shadowRoot?.appendChild(forms)
+        
+        // const btnPost = this.shadowRoot?.getElementById("btn4");
+        // if(btnPost){ btnPost.addEventListener("click", (event) => {
+        //     event.preventDefault();
+        //     console.log("hola, funciono")
+        //   });}
 /*         const navBar = this.ownerDocument.createElement('nav-bar')
         this.shadowRoot?.appendChild(navBar)
         const newPost = this.ownerDocument.createElement('new-post')
