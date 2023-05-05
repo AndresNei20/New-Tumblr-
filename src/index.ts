@@ -2,6 +2,7 @@ import './components/export'
 import { Signup } from './components/export';
 import Login from './screens/login/login';
 import './screens/profile/profile'
+import './screens/dashboard/dashboard'
 
 class AppContainer extends HTMLElement{
     login : Login[]=[];
@@ -17,28 +18,10 @@ class AppContainer extends HTMLElement{
     render(){
 
         if(this.shadowRoot)
-        this.shadowRoot.innerHTML = `` /* ` 
-        <nav-bar></nav-bar>
-        <new-post> </new-post>  
-        `  */
-    /*     const profile = this.ownerDocument.createElement('profile-screen')
-        this.shadowRoot?.appendChild(profile) */
+        this.shadowRoot.innerHTML = `` 
+        const Dashboard = this.ownerDocument.createElement('app-dashboard')
+        this.shadowRoot?.appendChild(Dashboard)
 
-        const Login = this.ownerDocument.createElement('log-in')
-        this.shadowRoot?.appendChild(Login)
-
-
-/*         const navBar = this.ownerDocument.createElement('nav-bar')
-        this.shadowRoot?.appendChild(navBar)
-        const newPost = this.ownerDocument.createElement('new-post')
-        this.shadowRoot?.appendChild(newPost) */
-
-        // if(this.shadowRoot){
-        //     this.shadowRoot.innerHTML=``
-        //     const Login = this.ownerDocument.createElement("log-in")as Login;
-        //     this.shadowRoot?.appendChild(Login);}
-
-        
 
     }}
 
