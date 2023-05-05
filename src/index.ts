@@ -1,6 +1,7 @@
 import './components/export'
 import { Signup } from './components/export';
 import Login from './screens/login/login';
+import './screens/profile/profile'
 
 class AppContainer extends HTMLElement{
     login : Login[]=[];
@@ -17,17 +18,14 @@ class AppContainer extends HTMLElement{
 
         if(this.shadowRoot)
         this.shadowRoot.innerHTML = `
+        <link rel="stylesheet" href="../src/app-container.css">`/* `
         <nav-bar></nav-bar>
         <new-post> </new-post>  
-        `
-        const forms = this.ownerDocument.createElement('app-form')
-        this.shadowRoot?.appendChild(forms)
-        
-        const btnPost = this.shadowRoot?.getElementById("btn4");
-        if(btnPost){ btnPost.addEventListener("click", (event) => {
-            event.preventDefault();
-            console.log("hola, funciono")
-          });}
+        ` */
+        const profile = this.ownerDocument.createElement('profile-screen')
+        this.shadowRoot?.appendChild(profile)
+
+
 /*         const navBar = this.ownerDocument.createElement('nav-bar')
         this.shadowRoot?.appendChild(navBar)
         const newPost = this.ownerDocument.createElement('new-post')
