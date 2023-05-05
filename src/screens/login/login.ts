@@ -1,3 +1,4 @@
+import { dispatch } from "../../store";
 
 
 export enum Attributes {
@@ -55,8 +56,11 @@ render(){
         </section>
         </section>
         </section>
-        
         `
+        const start = this.ownerDocument.getElementById('start');
+        start?.addEventListener('click', ()=>{
+            dispatch
+        })
         //.addEventlistener(() => {
        //     dispatch(changeScreen("login"))
        //s })

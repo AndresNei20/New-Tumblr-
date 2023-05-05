@@ -17,13 +17,15 @@ class AppContainer extends HTMLElement{
     render(){
 
         if(this.shadowRoot)
-        this.shadowRoot.innerHTML = `
-        <link rel="stylesheet" href="../src/app-container.css">`/* `
+        this.shadowRoot.innerHTML = `` /* ` 
         <nav-bar></nav-bar>
         <new-post> </new-post>  
-        ` */
-        const profile = this.ownerDocument.createElement('profile-screen')
-        this.shadowRoot?.appendChild(profile)
+        `  */
+    /*     const profile = this.ownerDocument.createElement('profile-screen')
+        this.shadowRoot?.appendChild(profile) */
+
+        const Login = this.ownerDocument.createElement('log-in')
+        this.shadowRoot?.appendChild(Login)
 
 
 /*         const navBar = this.ownerDocument.createElement('nav-bar')
