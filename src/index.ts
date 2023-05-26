@@ -24,7 +24,10 @@ class AppContainer extends HTMLElement{
         if(this.shadowRoot)
         this.shadowRoot.innerHTML = `` 
 
-        switch (appState.screen){
+        const login = this.ownerDocument.createElement('log-in')
+        this.shadowRoot?.appendChild(login)
+
+/*         switch (appState.screen){
             case Screens.LOGIN:
                 const login = this.ownerDocument.createElement('log-in')
                 this.shadowRoot?.appendChild(login)
@@ -47,7 +50,7 @@ class AppContainer extends HTMLElement{
                         break; 
             default:
                 break;
-        }
+        } */
     }}
 
 customElements.define('app-container', AppContainer)
