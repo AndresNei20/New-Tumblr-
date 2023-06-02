@@ -38,3 +38,10 @@ export const addNewPost = ({payload}: Pick<AddPostAction, "payload">): AddPostAc
         payload
     }
 }
+
+export const setUserCredentials = (user: string) => {
+    return {
+      type: "SETUSER",
+      payload: user,
+    };
+  };

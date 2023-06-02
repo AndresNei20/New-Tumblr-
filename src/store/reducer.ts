@@ -23,10 +23,6 @@ switch (action) {
             case PostActions.ADD_POST:
                 return{
                     ...currentState,
-                        newPost: [
-                            payload,
-                            ...currentState.newPost
-                        ]
             }
             case PostActions.GET:
                 return{

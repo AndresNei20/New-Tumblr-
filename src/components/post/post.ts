@@ -18,12 +18,11 @@ class NewPost extends HTMLElement {
     constructor(){
         super();
         this.attachShadow({mode:'open'})
-        addObserver(this)
     }
 
    async connectedCallback(){
-    const action = await getPosts()
-        dispatch(action); 
+/*     const action = await getPosts()
+        dispatch(action); */ 
     }
 
     attributeChangedCallback(propName: AttributeImg, oldValue: string | undefined, newValue: string | undefined){
@@ -36,7 +35,7 @@ class NewPost extends HTMLElement {
     }
 
     render(action: any){
-        console.log("rendered");
+/*         console.log("rendered");
        
         let newpost = "";
 
@@ -50,14 +49,14 @@ class NewPost extends HTMLElement {
              <new-des description ="${postdata.description}" hashtags="${postdata.hashtags}"></new-des>
              `
 
-/*              for (let i = 0; i < appState.newPost.length; i++) {
+             for (let i = 0; i < appState.newPost.length; i++) {
                 console.log(i);
                 newpost += `
                 <new-prof image ="${.pic}" id="${i.id}" ></new-prof>
                 <img src="${postdata.img}"></img>    
                 <new-des description ="${postdata.description}" hashtags="${postdata.hashtags}"></new-des>
                 `
-             } */
+             }
          })
          if(this.shadowRoot)this.shadowRoot.innerHTML += `
         <link rel="stylesheet" href="../src/components/post/post.css">
@@ -66,7 +65,7 @@ class NewPost extends HTMLElement {
         ${newpost}
         </section>
         `
-
+ */
     }
 }
 customElements.define('new-post', NewPost)

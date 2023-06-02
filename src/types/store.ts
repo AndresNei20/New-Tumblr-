@@ -10,8 +10,7 @@ export type AppState = {
         password: string,
         birthday: string,
     },
-       postData : postData [],
-       newPost: postData[],
+       postData : postData [];
        screen: Screens; 
 }
 

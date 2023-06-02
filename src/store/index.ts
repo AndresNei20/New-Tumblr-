@@ -17,7 +17,6 @@ export let emptyState: AppState = {
         birthday: "",
     },
     postData: [], 
-    newPost: [],
     screen: Screens.LOGIN
 }
 

@@ -1,3 +1,4 @@
+import './screens/export'
 import './components/export'
 import { Signup } from './components/export';
 import Login from './screens/login/login';
@@ -24,8 +25,8 @@ class AppContainer extends HTMLElement{
         if(this.shadowRoot)
         this.shadowRoot.innerHTML = `` 
 
-        const login = this.ownerDocument.createElement('log-in')
-        this.shadowRoot?.appendChild(login)
+/*         const login = this.ownerDocument.createElement('log-in')
+        this.shadowRoot?.appendChild(login) */
 
 /*         switch (appState.screen){
             case Screens.LOGIN:
@@ -50,7 +51,12 @@ class AppContainer extends HTMLElement{
                         break; 
             default:
                 break;
-        } */
+        }  */
+/*         const signup = this.ownerDocument.createElement('sign-up')
+        this.shadowRoot?.appendChild(signup) */
+
+        const logIn = this.ownerDocument.createElement('log-in')
+        this.shadowRoot?.appendChild(logIn)
     }}
 
 customElements.define('app-container', AppContainer)
