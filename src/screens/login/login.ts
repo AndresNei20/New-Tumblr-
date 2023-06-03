@@ -1,7 +1,14 @@
-import { dispatch } from "../../store";
+import { appState, dispatch } from "../../store";
 import { navigate } from "../../store/actions";
 import { Screens } from "../../types/navigation";
+import firebase from "../../utils/firebase";
 
+const userCredentials = {
+    username: "",
+    birthday: "",
+    password: "",
+    email: "",
+}
 
 export enum Attributes {
     "username"="username",
@@ -39,8 +46,20 @@ attributeChangedCallback(
         break;
 }
 this.render();
-
 }
+
+async handleLoginButton() {
+    firebase.loginUser(userCredentials);
+    console.log(appState.user)
+  }
+
+  changeWindow(){
+    dispatch(navigate(Screens.SIGNUP))
+  }
+
+  backWindow(){
+    dispatch(navigate(Screens.DASHBOARD))
+  }
 
 render(){
     if(this.shadowRoot){
@@ -73,22 +92,36 @@ render(){
         sectionInp.id = "datainput"
 
         const userInp = this.ownerDocument.createElement('input');
-        userInp.placeholder = "Username"
+        userInp.placeholder = "Email"
+        userInp.addEventListener('change', (e: any)=> {
+            console.log(e.target.value);
+            userCredentials.email = e.target.value;
+        })
 
         const userPass = this.ownerDocument.createElement('input');
         userPass.placeholder = "Password"
         userPass.type = "password"
+        userPass.addEventListener('change', (e: any)=> {
+            console.log(e.target.value);
+            userCredentials.password = e.target.value;
+        })
 
         const btnLog = this.ownerDocument.createElement('button');
         btnLog.id = "start"
         btnLog.innerText = "Log In"
         btnLog.addEventListener('click', () => {
-            dispatch(navigate(Screens.DASHBOARD))
+            console.log('funciono')
+            this.handleLoginButton
+             dispatch(navigate(Screens.DASHBOARD)) 
+
         })
 
         const btnSign = this.ownerDocument.createElement('button');
         btnSign.id = "other"
         btnSign.innerText = "Sign up"
+        btnSign.addEventListener('click', () => {
+            dispatch(navigate(Screens.SIGNUP))
+        })
 
         sectionInp.appendChild(userInp)
         sectionInp.appendChild(userPass)

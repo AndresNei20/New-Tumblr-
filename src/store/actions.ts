@@ -41,7 +41,7 @@ export const addNewPost = ({payload}: Pick<AddPostAction, "payload">): AddPostAc
 
 export const setUserCredentials = (user: string) => {
     return {
-      type: "SETUSER",
+      action: "SETUSER",
       payload: user,
     };
   };

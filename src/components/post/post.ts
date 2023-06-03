@@ -34,7 +34,17 @@ class NewPost extends HTMLElement {
         
     }
 
-    render(action: any){
+    render(){
+        if(this.shadowRoot){this.shadowRoot.innerHTML = `<link rel="stylesheet" href="../src/components/post/post.css">`}
+        
+        const section = this.ownerDocument.createElement('section')
+        section.className = "post";
+        
+        const inpBar = this.ownerDocument.createElement('input-bar')
+
+        section.appendChild(inpBar);
+        this.shadowRoot?.appendChild(section)
+
 /*         console.log("rendered");
        
         let newpost = "";
