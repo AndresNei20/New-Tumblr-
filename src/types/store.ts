@@ -1,16 +1,14 @@
 import postData from "./postData";
 import { Screens } from "./navigation";
+import { User } from "./User";
+import { Post } from "./Post";
 
 export type observer = ({render: () => void} & HTMLElement);
 
 export type AppState = {
-    user:{
-        username: string,
-        email: string,
-        password: string,
-        birthday: string,
-    },
-       postData : postData [];
+    user: User,
+       posts : Post [];
+       favorites: Post [];
        screen: Screens; 
 }
 
@@ -21,17 +19,13 @@ export enum NavigationActions{
 export enum AuthActions{
     "LOGIN" = "LOGIN",
     "LOGOUT" = "LOGOUT",
-}
-
-export enum PostActions{
-    "ADD_POST" = "ADD_POST",
-    "GET" = "GET",
-    "DELETE" = "DELETE"
+    "REGISTER" = "REGISTER",
+    "EDIT" = "EDIT",
 }
 
 export interface LogInAction {
     action: AuthActions.LOGIN,
-    payload: Pick<AppState, "user"> 
+    payload: User 
 }
 
 export interface LogOutAction{
@@ -39,14 +33,42 @@ export interface LogOutAction{
     payload: void
 }
 
+export interface RegisterAction{
+    action: AuthActions.REGISTER,
+    payload: User
+}
+
+export interface EditUSerAction{
+    action: AuthActions.EDIT,
+    payload: User
+}
+
+export enum PostActions{
+    "ADD_POST" = "ADD_POST",
+    "GET" = "GET",
+    "DELETE" = "DELETE",
+    "ADD_FAVORITES" = "ADD_FAVORITES",
+    "GET_FAVORITES" = "GET_FAVORITES"
+}
+
 export interface AddPostAction{
     action: PostActions.ADD_POST,
-    payload: postData // | post (We must to ask about if we use post instead of postData)
+    payload: Post
 }
 
 export interface GetPostAction{
     action: PostActions.GET,
-    payload: postData []
+    payload: Post[]
+}
+
+export interface AddFavoriteAction{
+    action: PostActions.ADD_FAVORITES,
+    payload: Post
+}
+
+export interface GetFavoriteAction{
+    action: PostActions.GET_FAVORITES,
+    payload: Post[]
 }
 
 export interface DeletePostAction{
@@ -59,4 +81,4 @@ export interface NavigateAction{
     payload: Screens
 }
 
-export type Actions = LogInAction | LogOutAction | AddPostAction | GetPostAction | DeletePostAction | NavigateAction
+export type Actions = LogInAction | LogOutAction | AddPostAction | GetPostAction | DeletePostAction | NavigateAction | AddFavoriteAction | GetFavoriteAction | RegisterAction | EditUSerAction

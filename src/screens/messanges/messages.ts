@@ -6,7 +6,7 @@ export enum MessangerScreenApp {
     "username" = "username"
 }
 
-class MessangerScreen extends HTMLElement {
+export default class MessangerScreen extends HTMLElement {
     username?: string
 
     static get observedAttributes() {
@@ -56,15 +56,39 @@ class MessangerScreen extends HTMLElement {
                 <side-menu id="sidemenu"></side-menu>
             </section>
         </section>
-        
-
         `
 
+        const wholeSection = this.ownerDocument.createElement('section')
+        wholeSection.id = "while"
+        
+        const navBar = this.ownerDocument.createElement('nav-bar')
+
+        const sectionRow = this.ownerDocument.createElement('section')
+        sectionRow.id = "row"
+        
+        const divChat = this.ownerDocument.createElement('div')
+        divChat.id = "conversation";
+        
+        const messageBar = this.ownerDocument.createElement('message-bar')
+
+        const messageBox1 = this.ownerDocument.createElement('message-box')
+        
+        const messageBox2 = this.ownerDocument.createElement('message-box')
+
+        const messageBox3 = this.ownerDocument.createElement('message-box')
 
 
+        divChat.appendChild(messageBar)
+        divChat.appendChild(messageBox1)
+        divChat.appendChild(messageBox2)
+        divChat.appendChild(messageBox3)
+
+        wholeSection.appendChild(navBar)
+        wholeSection.appendChild(sectionRow)
+
+        this.shadowRoot?.appendChild(wholeSection);
 
     }
 }
 
 customElements.define('messanges-screen', MessangerScreen)
-export default MessangerScreen

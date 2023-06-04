@@ -2,14 +2,13 @@ nav{position: fixed;}
 
 #search {
     position: absolute;
-        width: 456px;
-        height: 43px;
-        left: 113px;
-        top: 23px;
-        border: none;
-
-        background: #A6AAD1;
-        border-radius: 4px;
+    width: 55%;
+    height: 62%;
+    left: 7%;
+    top: 20%;
+    border: none;
+    background: #A6AAD1;
+    border-radius: 4px;
 }
 
 
@@ -30,7 +29,14 @@ nav{position: fixed;}
         display: none;
     }
     btn-list {
-        width: 40em;
+     /*    width: 40em; */
+        width: 55%;
+        height: 40px;
+        display: flex;
+        flex-direction: row;
+        margin-left: 19%;
+        margin-top: 1%;
+        justify-content: center;
     }
 }
 #navBack{

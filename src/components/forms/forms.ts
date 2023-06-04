@@ -1,14 +1,16 @@
 import { dispatch } from "../../store";
 import { addNewPost } from "../../store/actions";
+import { Post } from "../../types/Post";
 import postData from "../../types/postData";
 
-const customPost: postData = {
-    img:"",
+/* const customPost: Post = {
+    imgPost:"",
     pic:"https://instagram.fpei2-1.fna.fbcdn.net/v/t51.2885-19/291509149_438415681217081_8296261908460936663_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.fpei2-1.fna.fbcdn.net&_nc_cat=105&_nc_ohc=EfTsnVVGe04AX8ZsLvm&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfCcQLSW6wE4xZCJpY23U6KJeAWxl-viDS4d_CRydAPHsg&oe=64598B92&_nc_sid=8fd12b",
     id: "user",
     description: "",
     hashtags: "",
-}
+
+} */
 
 export enum AttributeForms{
     "image"="image",

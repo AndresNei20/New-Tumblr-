@@ -27,8 +27,11 @@ export let emptyState: AppState = {
         email: "",
         password: "",
         birthday: "",
+        id: "",
+        img: ""
     },
-    postData: [], 
+    posts: [], 
+    favorites: [],
     screen: Screens.LOGIN
 }
 

@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "../firebaseconfig";
-import { getFirestore, collection, doc, onSnapshot, addDoc, getDocs, query, orderBy } from "firebase/firestore";
+import { getFirestore, collection, doc, onSnapshot, addDoc, getDocs, query, orderBy, setDoc } from "firebase/firestore";
 import {  Product } from "../types/product";
 import {
   createUserWithEmailAndPassword,
@@ -10,6 +10,9 @@ import {
   browserSessionPersistence,
   onAuthStateChanged
 } from "firebase/auth";
+import { User } from "../types/User";
+import { appState } from "../store";
+import { Post } from "../types/Post";
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -57,50 +60,110 @@ const loginUser = async ({
   });
 };
 
-
-
-const addProduct = async (product: Omit<Product, "id">) => {
+const AddPostDB = async (post: Post) =>{
   try {
-    const where = collection(db, "products");
-    await addDoc(where, { ...product, createdAt: new Date() });
-    console.log("se añadió con éxito");
-  } catch (error) {
-    console.error(error);
+  const where = collection(db, "posts")
+    await addDoc(where,{...post, createdAt: new Date()});
+    return true
+  } catch (e) {
+    console.error("Error adding document: ", e);
+    return false
   }
-};
+}
 
+const GetPostsDB = async(): Promise<Post[]> =>{
+  const resp: Post[] = [];
 
-const getProducts = async () => {
-  const q = query(collection(db, "products"), orderBy("createdAt"));
+  const q=query(collection(db,"posts"), orderBy("createdAt"))
   const querySnapshot = await getDocs(q);
-  const transformed: Array<Product> = [];
-
   querySnapshot.forEach((doc) => {
-    const data: Omit<Product, "id"> = doc.data() as any;
-    transformed.push({ id: doc.id, ...data });
+    console.log(`${doc.id} => ${doc.data()}`);
+    resp.push({
+      ...doc.data()
+    }as Post)
   });
+  return resp
+}
 
-  return transformed;
-};
 
-const getProductsListener = (cb: (docs: Product[]) => void) => {
-  const q = query(collection(db, "products"), orderBy("createdAt")); 
-  onSnapshot(q, (collection) => {
-    const docs: Product[] = collection.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    })) as Product[];
-    cb(docs);
+const AddUserToDB = async(user: User) => {
+  try{
+    const where = collection(db, "users")
+      await addDoc(where,{...user, createdAt: new Date()});
+      return true
+  } catch (e) {
+    console.error("error adding document: ", e)
+    return false
+  }
+}
+
+const EditUserDB = async (user: User) =>{
+  try {
+    await setDoc (doc(db, "users", appState.user.id), {
+      id: appState.user.id,
+      username: appState.user.username,
+      email: appState.user.email,
+      password: appState.user.password,
+      img: appState.user.img,
+    })
+    return true
+  } catch (e) {
+    console.error("Error editing document: ", e);
+    return false
+  }
+}
+
+const AddFavoriteDB = async (favorite: Post) =>{
+  try {
+    const main = collection(db, "users", appState.user.id)
+  const where = collection(main, "favorites") 
+  await addDoc(where,{...favorite, createdAt: new Date()});
+    return true
+  } catch (e) {
+    console.error("Error adding document: ", e);
+    return false
+  }
+}
+
+const GetFavoritesDB = async(): Promise<Post[]> =>{
+  const resp: Post[] = [];
+
+  const main = collection(db, "users", appState.user.id)
+  const q=query(collection(main,"favorites"), orderBy("createdAt"))
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((doc) => {
+    console.log(`${doc.id} => ${doc.data()}`);
+    resp.push({
+      ...doc.data()
+    }as Post)
   });
-};
+  return resp
+}
+
+
+const GetFavoritesListener = (cb: (docs: Post[]) => void) => {
+  const main = collection(db, "users", appState.user.id)
+    const q = query(collection(main, "favorites"), orderBy("createdAt")); 
+    onSnapshot(q, (collection) => {
+      const docs: Post[] = collection.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      })) as Post[];
+      cb(docs);
+    });
+  };
 
 export {auth}
 export {db}
 export default {
-  addProduct,
-  getProducts,
-  getProductsListener,
   registerUser,
   loginUser,
   onAuthStateChanged,
+  AddUserToDB,
+  EditUserDB, 
+  AddFavoriteDB,
+  GetFavoritesDB,
+  GetFavoritesListener,
+  AddPostDB,
+  GetPostsDB
 };

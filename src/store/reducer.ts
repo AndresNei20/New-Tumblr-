@@ -4,46 +4,52 @@ import { Actions, AppState, AuthActions, NavigationActions, PostActions } from "
 export const reducer = (currentAction: Actions, currentState: AppState): AppState => {
     const {action, payload} = currentAction;
 
-switch (action) {
-    case AuthActions.LOGIN:
-        return{
-            ...currentState,
-            user: payload.user
-        }
+    switch (action) {
+        case AuthActions.LOGIN:
+            currentState.user = payload
+            return currentState
+
+        case AuthActions.REGISTER:
+            currentState.user = payload
+            return currentState
+
         case AuthActions.LOGOUT:
             return{
-                ...currentState,
-                user:{
+                ...currentState, user:{
+                    id: "",
                     username: "",
+                    birthday: "",
                     email: "",
                     password: "",
-                    birthday: ""
+                    img: "",
                 }
             }
-            case PostActions.ADD_POST:
-                return{
-                    ...currentState,
+
+        case AuthActions.EDIT:
+            currentState.user = payload
+            return currentState
+
+        case PostActions.ADD_POST:
+            currentState.posts = [...currentState.posts, payload]
+            return currentState
+
+        case PostActions.GET:
+            currentState.posts = payload
+            return currentState
+
+        case PostActions.ADD_FAVORITES:
+            currentState.favorites = [...currentState.favorites, payload]
+            return currentState
+
+        case PostActions.GET_FAVORITES: 
+            currentState.favorites = payload
+            return currentState
+
+        case NavigationActions.NAVIGATE:
+            return{
+                ...currentState,
+                screen: payload
             }
-            case PostActions.GET:
-                return{
-                    ...currentState,
-                    postData: payload
-                }
-            case PostActions.DELETE:
-                const postState = [...currentState.postData]
-                postState.filter
-                return{
-                    ...currentState,
-
-                    //we need to know how to delete something idk
-                }
-                case NavigationActions.NAVIGATE:
-                    return{
-                        ...currentState,
-                        screen: payload,
-                    }
-
-
 
         default:
             return currentState;

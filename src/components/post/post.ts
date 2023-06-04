@@ -1,15 +1,15 @@
 import ApiPostData from '../../services/ApiPostData';
 import { addObserver, appState, dispatch, emptyState } from '../../store';
-import { getPosts } from '../../store/actions';
+import { GetPost } from '../../store/actions';
 import { GetPostAction, PostActions } from '../../types/store';
-import * as components from '../export'
+import '../export'
 
 console.log (await ApiPostData.get());
 
 export enum AttributeImg{
     "image" = "image"
 }
-class NewPost extends HTMLElement {
+export default class NewPost extends HTMLElement {
     image?: string
    static get observedAttributes(){
     return["image"]
@@ -37,13 +37,13 @@ class NewPost extends HTMLElement {
     render(){
         if(this.shadowRoot){this.shadowRoot.innerHTML = `<link rel="stylesheet" href="../src/components/post/post.css">`}
         
-        const section = this.ownerDocument.createElement('section')
+/*         const section = this.ownerDocument.createElement('section')
         section.className = "post";
         
         const inpBar = this.ownerDocument.createElement('input-bar')
 
         section.appendChild(inpBar);
-        this.shadowRoot?.appendChild(section)
+        this.shadowRoot?.appendChild(section) */
 
 /*         console.log("rendered");
        
@@ -79,4 +79,3 @@ class NewPost extends HTMLElement {
     }
 }
 customElements.define('new-post', NewPost)
-export default NewPost

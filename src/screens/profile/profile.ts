@@ -102,6 +102,9 @@ export default class Profile extends HTMLElement{
         const signOutBtn = this.ownerDocument.createElement('button');
         signOutBtn.className = "signOutBtn";
         signOutBtn.innerText = "Sign Out";
+        signOutBtn.addEventListener('click', () => {
+            
+        })
         back_div.appendChild(signOutBtn)
 
         const deleteBtn = this.ownerDocument.createElement('button');

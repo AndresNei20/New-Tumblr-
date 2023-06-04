@@ -1,4 +1,5 @@
 import '../../components/export'
+import dashboardStyle from './dashboard.css'
 export default class Dashboard extends HTMLElement{
     constructor(){
         super();
@@ -12,10 +13,25 @@ export default class Dashboard extends HTMLElement{
     render(){
 
         if(this.shadowRoot)
-        this.shadowRoot.innerHTML = ` 
-        <nav-bar></nav-bar>
-        <new-post> </new-post>  
-        `
+        this.shadowRoot.innerHTML = `<link rel="stylesheet" href="../src/screens/dashboard/dashboard.css">`
+
+        const css = this.ownerDocument.createElement('link');
+        css.innerHTML = dashboardStyle;
+        this.shadowRoot?.appendChild(css)
+
+        const navBar = this.ownerDocument.createElement('nav-bar');
+        const inpBar = this.ownerDocument.createElement('input-bar');
+        const newPost = this.ownerDocument.createElement('new-post');
+
+        const container = this.ownerDocument.createElement('body');
+        container.id = "dashBody"
+
+        container.appendChild(navBar)
+        container.appendChild(inpBar)
+        container.appendChild(newPost)
+
+        this.shadowRoot?.appendChild(container)
+
     }}
 
 customElements.define('app-dashboard', Dashboard)
