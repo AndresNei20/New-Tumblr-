@@ -84,6 +84,7 @@ render(){
         sectionBig.id = "bigsec"
 
         const logo = this.ownerDocument.createElement('img')
+        logo.id = "logoimg"
         logo.src = "https://assets.tumblr.com/images/logo_page/1x/t-black.png?_v=6cd7fb4b68e5e395b4ae20f748214a96"
 
         const sectionInp = this.ownerDocument.createElement('section')

@@ -27,7 +27,7 @@ import {onAuthStateChanged} from 'firebase/auth'
     dispatch(navigate(Screens.LOGIN));
   }
 }); */
-/* onAuthStateChanged(auth, async (u: any) => {
+onAuthStateChanged(auth, async (u: any) => {
   console.log('Entra');
   console.log('user', u)
   if (u) {
@@ -40,7 +40,7 @@ import {onAuthStateChanged} from 'firebase/auth'
   } else {
     dispatch(navigate(Screens.LOGIN));
   }
-}); */
+});
 onAuthStateChanged(auth, async(user:any) => {
   console.log(user)
   if (user) {

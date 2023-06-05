@@ -1,19 +1,22 @@
 import ApiPostData from '../../services/ApiPostData';
 import { addObserver, appState, dispatch, emptyState } from '../../store';
-import { GetPost } from '../../store/actions';
+import { AddPost, GetPost } from '../../store/actions';
+import { Post } from '../../types/Post';
+import postData from '../../types/postData';
 import { GetPostAction, PostActions } from '../../types/store';
 import '../export'
 
 /* console.log (await ApiPostData.get()); */
 
-export enum AttributeImg{
-    "image" = "image"
+const postDatas: Post = {
+    id: "",
+    img: "https://1000logos.net/wp-content/uploads/2017/06/Tumblr-symbol.jpg",
+    username: "Tumblr_Official",
+    description: "Welcome to our new users",
+    createdAt: "",
 }
 export default class NewPost extends HTMLElement {
-    image?: string
-   static get observedAttributes(){
-    return["image"]
-   }
+    
 
     constructor(){
         super();
@@ -22,22 +25,17 @@ export default class NewPost extends HTMLElement {
     }
 
     async connectedCallback() {
-        if (appState.posts.length === 0){
+        if(appState.posts.length === 0) {
             dispatch( await GetPost())
+            if(appState.posts.length === 0){
+                dispatch(await AddPost(postDatas))
+            }
             this.render();
-        } else{
+        } else {
             this.render();
-        }  
-    }
-
-    attributeChangedCallback(propName: AttributeImg, oldValue: string | undefined, newValue: string | undefined){
-        switch (propName) {
-            default:
-            this[propName] = newValue;
-                break;
         }
-        
-    }
+      }
+
 
     async render(){
         if(this.shadowRoot){this.shadowRoot.innerHTML = `<link rel="stylesheet" href="../src/components/post/post.css">`}

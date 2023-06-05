@@ -93,6 +93,8 @@ render(){
 
     const imgLogo = this.ownerDocument.createElement('img');
     imgLogo.src = "https://assets.tumblr.com/images/logo_page/1x/t-black.png?_v=6cd7fb4b68e5e395b4ae20f748214a96"
+    imgLogo.id = "logoimg"
+    
     sectionBig.appendChild(imgLogo)
     imgLogo.addEventListener('click', () => {
         dispatch(navigate(Screens.LOGIN))

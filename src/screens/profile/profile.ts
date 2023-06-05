@@ -3,14 +3,14 @@ import { appState, dispatch } from '../../store';
 import { LogOut, SetUserCredentials, navigate } from '../../store/actions';
 import { Screens } from '../../types/navigation';
 
-const credentials = {
-    uid: appState.userData.uid,
+/* const credentials = {
+    uid: appState.userData.uid ,
     username: "",
     email: appState.userData.email,
     password: appState.userData.password,
     img: "",
     birthday: ""
-}
+} */
 export default class Profile extends HTMLElement{
 
     constructor(){
