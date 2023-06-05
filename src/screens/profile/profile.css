@@ -1,32 +1,41 @@
 div{
     display: flex;
-    width: 78%;
+    width: 100%;
     padding-top: 4%;
     justify-content: flex-start;
+    align-items: center;
     flex-direction: column;
-    background-color: rgb(36, 25, 109);
+    background-color: rgb(3, 7, 32);
+    left: 0;
+    top: 0;
+   
+
 }
 img{
     width: 20%;
     border-radius: 50%;
-    margin-left: 36%;
+    margin-left: 40%;
     margin-top: 6%;  
 }
 
 .sectionWhite{
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    justify-content: center;
 }
 
 .sectionWhite{
     background-color: white;
     width: 95%;
     margin-top: 0%;
+    border-radius: 20px;
 }
 
 .signOutBtn{
+
     width: 50%;
     height: 4%;
     padding: 1%;
@@ -35,22 +44,25 @@ img{
     color: black;
     border: none;
     border-radius: 3px;
-    margin-left: 25%;
+    
 }
 
 .deleteBtn{
+ 
     width: 50%;
     height: 4%;
     padding: 1%;
-    margin: 2%;
+    margin-top: 0;
+    margin-bottom: 2%;
     color: white;
     background-color: rgb(255, 126, 117);
     border: none;
     border-radius: 3px;
-    margin-left: 25%;
+    
     }
 
 .btnSave{
+    border-radius: 5px;
     width: 12%;
     color: white;
     background-color: rgb(84, 214, 255);
@@ -63,6 +75,7 @@ img{
 
 input{
     width: 82%;
+    border-radius: 8px;
     margin-left: 7%;
     background-color: rgb(217, 217, 217);
     border: none;
@@ -71,14 +84,16 @@ input{
 }
 h3{
     margin-left: 7%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
 }
 
 .userName{
-    margin-left: 43%;
+    margin-left: 47%;
 }
 
 p{
-    margin-left: 41%;
+    margin-left: 45%;
 }
 
 @media all and (max-width:430px){
@@ -101,7 +116,7 @@ input{
 }
 div{
     width: 100%;
-    background-color: rgb(36, 25, 109);
+    background-color: rgb(3, 7, 32);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -109,23 +124,27 @@ div{
 
 section{
     width: 100%;
+    display: flex;
+    align-items: center;
 }
 .userName{
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    margin-left: 40%;
+    
 }
 p{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    margin-left: 35%;
+   
 }
 .btnSave{
-    width: 18%;
+    width: 20%;
     color: white;
     background-color: rgb(84, 214, 255);
     border: none;
-    height: 2%;
+    border-radius: 2px;
+    height: 5%;
     margin-top: 5%;
     margin-bottom: 6%;
     margin-left: 40%;
@@ -133,7 +152,7 @@ p{
 .sectionWhite{
     background-color: white;
     width: 95%;
-    margin-top: 27%;
+    
 }
 
 .signOutBtn{
@@ -156,6 +175,7 @@ p{
     background-color: rgb(255, 126, 117);
     border: none;
     border-radius: 3px;
+    margin-bottom: 10%;
     }
 }
 

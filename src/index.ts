@@ -28,7 +28,7 @@ class AppContainer extends HTMLElement{
 /*         const login = this.ownerDocument.createElement('log-in')
         this.shadowRoot?.appendChild(login) */
 
-        switch (appState.screen){
+        /* switch (appState.screen){
             case Screens.LOGIN:
                 const login = this.ownerDocument.createElement('log-in')
                 this.shadowRoot?.appendChild(login)
@@ -51,7 +51,7 @@ class AppContainer extends HTMLElement{
                         break; 
             default:
                 break;
-        } 
+        }  */
 /*         const signup = this.ownerDocument.createElement('sign-up')
         this.shadowRoot?.appendChild(signup) */
 
@@ -64,8 +64,8 @@ class AppContainer extends HTMLElement{
 /*         const dashboard = this.ownerDocument.createElement('app-dashboard')
         this.shadowRoot?.appendChild(dashboard) */
 
-/*         const profile = this.ownerDocument.createElement('profile-screen')
-        this.shadowRoot?.appendChild(profile) */
+        const profile = this.ownerDocument.createElement('profile-screen')
+        this.shadowRoot?.appendChild(profile)
 
 /*         const form = this.ownerDocument.createElement('app-form')
         this.shadowRoot?.appendChild(form) */
