@@ -25,7 +25,15 @@ export const LogOut =  ():LogOutAction =>{
 
     if(appState.userCredentials !==null || ''){
     dispatch(SetUserCredentials(''))    
-    sessionStorage.clear()
+    appState.userData = {   
+     username: "",
+    email: "",
+    password: "",
+    birthday: "",
+    uid: "",
+    img: ""}
+    sessionStorage.clear();
+    localStorage.clear();
     dispatch(navigate(Screens.LOGIN))
     location.reload()
 }
@@ -54,7 +62,6 @@ export const AddPost = async(post: Post): Promise<AddPostAction> => {
 
 export const GetPost = async(): Promise<GetPostAction> => {
     const posts = await firebase.GetPostsDB();
-
     return{
         action: PostActions.GET,
         payload: posts

@@ -1,6 +1,17 @@
+import { dispatch } from "../../store";
+import { AddPost } from "../../store/actions";
+import firebase from "../../utils/firebase";
 import dataicons from "./dataicons";
 export enum AttributeInpBar{
     "dataicons" = "dataicons"
+}
+
+const formData = {
+    id: "",
+    img: "",
+    username: "",
+    description: "",
+    createdAt: "",
 }
 class InputBar extends HTMLElement {
     dataicons?:string
@@ -40,6 +51,10 @@ class InputBar extends HTMLElement {
             </section>
             `
 
+            const capa = this.ownerDocument.createElement('section');
+            capa.className = "capa";
+            this.shadowRoot?.appendChild(capa)
+
             
             const sectionContainer = this.ownerDocument.createElement('section');
             sectionContainer.id = "containerbtn";
@@ -55,7 +70,11 @@ class InputBar extends HTMLElement {
             divBox1.id = "btn-box";
                 const btnText = this.ownerDocument.createElement('button')
                 btnText.id = "inp0"
-                btnText.addEventListener('click', () => {console.log('it works')})
+                btnText.addEventListener('click', () => {
+                    console.log('it works')
+                    popUp.style.display = 'flex';
+                    capa.style.display = 'flex';
+                })
                 const imgText = this.ownerDocument.createElement('img')
                 imgText.className = "options"
                 imgText.src = "../../../img/font.png" 
@@ -134,6 +153,56 @@ class InputBar extends HTMLElement {
                 sectionContainer.appendChild(divBtn)
 
                 this.shadowRoot?.appendChild(sectionContainer)
+
+                //Pop Up
+                const popUp = this.ownerDocument.createElement('section');
+                popUp.className = 'createPostPopUp'
+
+                const inputImg = this.ownerDocument.createElement('input');
+                inputImg.type = "file"
+                inputImg.placeholder = "Upload File"
+                inputImg.addEventListener("change", async () =>{
+                    const file = inputImg.files?.[0];
+                    if (file) await firebase.uploadFile(file);
+                    console.log(file?.name);
+                    if (file) {
+                      const img = await firebase.getFile(file.name);
+                      console.log("img", img);
+                      const src = String(img)
+                       formData.img = src 
+                  }
+                  });
+                popUp.appendChild(inputImg);
+                
+                const inputDes = this.ownerDocument.createElement('input');
+                inputDes.type = "text"
+                inputDes.placeholder = "Add some description"
+                inputDes.addEventListener('change', (e:any) => {
+                    formData.description = e.target.value
+                    console.log(formData)
+                })
+                popUp.appendChild(inputDes);
+
+                const btnClose = this.ownerDocument.createElement('button');
+                btnClose.textContent = "Close"
+                btnClose.addEventListener('click',() => {
+                    popUp.style.display = 'none';
+                    capa.style.display = 'none';
+                }
+                
+                )
+                popUp.appendChild(btnClose)
+                const btnPost = this.ownerDocument.createElement('button');
+                btnPost.textContent = "Post"
+                btnPost.addEventListener('click', async() => {
+                    popUp.style.display = 'none';
+                    capa.style.display = 'none';
+                    dispatch(await AddPost(formData))
+                })
+                popUp.appendChild(btnPost)
+
+
+                this.shadowRoot?.appendChild(popUp)
         
      }
     } 

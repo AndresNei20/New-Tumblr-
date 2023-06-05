@@ -18,10 +18,16 @@ export default class NewPost extends HTMLElement {
     constructor(){
         super();
         this.attachShadow({mode:'open'})
+        addObserver(this)
     }
 
-   connectedCallback(){
-    this.render()
+    async connectedCallback() {
+        if (appState.posts.length === 0){
+            dispatch( await GetPost())
+            this.render();
+        } else{
+            this.render();
+        }  
     }
 
     attributeChangedCallback(propName: AttributeImg, oldValue: string | undefined, newValue: string | undefined){
@@ -33,8 +39,9 @@ export default class NewPost extends HTMLElement {
         
     }
 
-    render(){
+    async render(){
         if(this.shadowRoot){this.shadowRoot.innerHTML = `<link rel="stylesheet" href="../src/components/post/post.css">`}
+        
         
 /*         const section = this.ownerDocument.createElement('section')
         section.className = "post";
@@ -44,37 +51,30 @@ export default class NewPost extends HTMLElement {
         section.appendChild(inpBar);
         this.shadowRoot?.appendChild(section) */
 
-/*         console.log("rendered");
+        console.log("rendered");
        
         let newpost = "";
 
         
         //Esto se hara como lo que hay en el 17_globalState en el Dashboard
-         action.forEach((postdata: any)=>{
-             console.log(postdata);
+         appState.posts.forEach((p)=>{
+             console.log(p);
              newpost += `
-             <new-prof image ="${postdata.pic}" id="${postdata.id}" ></new-prof>
-             <img src="${postdata.img}"></img>    
-             <new-des description ="${postdata.description}" hashtags="${postdata.hashtags}"></new-des>
-             `
+             <new-prof image ="${p.username}" id="${p.id}" ></new-prof>
+             <img src="${p.img}"></img>    
+             <new-des description ="${p.description}" createdAt = "${p.createdAt}" "Pretty boy"></new-des>                                 //revisar como hacer el createdAt
+             `                                  
 
-             for (let i = 0; i < appState.newPost.length; i++) {
-                console.log(i);
-                newpost += `
-                <new-prof image ="${.pic}" id="${i.id}" ></new-prof>
-                <img src="${postdata.img}"></img>    
-                <new-des description ="${postdata.description}" hashtags="${postdata.hashtags}"></new-des>
-                `
-             }
          })
          if(this.shadowRoot)this.shadowRoot.innerHTML += `
         <link rel="stylesheet" href="../src/components/post/post.css">
         <section class="post">
-        <input-bar></input-bar>
         ${newpost}
         </section>
         `
- */
+
+
+
     }
 }
 customElements.define('new-post', NewPost)

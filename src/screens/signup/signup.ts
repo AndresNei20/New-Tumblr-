@@ -145,8 +145,8 @@ render(){
     this.shadowRoot?.appendChild(css);
     dataInput.appendChild(userInp);
     dataInput.appendChild(birthInp);
-    dataInput.appendChild(passInp);
     dataInput.appendChild(emailInp);
+    dataInput.appendChild(passInp);
     dataInput.appendChild(logBtn);
     
 

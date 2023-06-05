@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "../firebaseconfig";
 import { getFirestore, collection, doc, onSnapshot, addDoc, getDocs, query, orderBy, setDoc } from "firebase/firestore";
+import { getStorage, ref, uploadBytes, getDownloadURL} from "firebase/storage";
 import {  Product } from "../types/product";
 import {
   createUserWithEmailAndPassword,
@@ -18,6 +19,40 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
+const storage = getStorage()
+
+const uploadFile = async (file: File) => {
+  const storageRef = ref(storage, file.name);
+  const res = await uploadBytes(storageRef, file);
+  console.log("file uploaded", res);
+};
+
+const getFile = async (name: string) => {
+  let urlimg = '';
+
+  await getDownloadURL(ref(storage, name))
+  .then((url) => {
+    // `url` is the download URL for 'images/stars.jpg'
+
+    // This can be downloaded directly:
+    const xhr = new XMLHttpRequest();
+    xhr.responseType = 'blob';
+    xhr.onload = (event) => {
+      const blob = xhr.response;
+    };
+    xhr.open('GET', url);
+    xhr.send();
+
+    urlimg = url;
+  
+  })
+  .catch((error) => {
+    // Handle any errors
+  });
+
+  console.log(urlimg);
+  return urlimg;
+}
 const registerUser = async ({
   email,
   password,
@@ -177,5 +212,8 @@ export default {
   GetFavoritesListener,
   AddPostDB,
   GetPostsDB,
-  GetPostsListener
+  GetPostsListener,
+  uploadFile,
+  getFile,
+  
 };

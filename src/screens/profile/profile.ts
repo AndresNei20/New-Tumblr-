@@ -1,6 +1,7 @@
 import '../../components/export'
 import { appState, dispatch } from '../../store';
-import { LogOut } from '../../store/actions';
+import { LogOut, SetUserCredentials, navigate } from '../../store/actions';
+import { Screens } from '../../types/navigation';
 
 const credentials = {
     uid: appState.userData.uid,
@@ -113,7 +114,19 @@ export default class Profile extends HTMLElement{
         signOutBtn.className = "signOutBtn";
         signOutBtn.innerText = "Sign Out";
         signOutBtn.addEventListener('click', () => {
-            dispatch(LogOut())
+            if(appState.userCredentials !==null || ''){
+                dispatch(SetUserCredentials(''))    
+                appState.userData = {   
+                 username: "",
+                email: "",
+                password: "",
+                birthday: "",
+                uid: "",
+                img: ""}
+                sessionStorage.clear()
+                dispatch(navigate(Screens.LOGIN))
+                location.reload()
+            }
         })
         back_div.appendChild(signOutBtn)
 

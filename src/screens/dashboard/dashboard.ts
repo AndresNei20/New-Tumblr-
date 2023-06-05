@@ -4,12 +4,12 @@ import firebase from '../../utils/firebase';
 import dashboardStyle from './dashboard.css'
 
 const credentials = {
-    uid: appState.userData.uid,
-    username: appState.userData.username,
-    birthday: appState.userData.birthday,
-    email: appState.userData.email,
-    password: appState.userData.password,
-    img: appState.userData.img,
+    uid:"" ,
+    username:"" ,
+    birthday: "",
+    email:"" ,
+    password: "",
+    img: "",
 }
 
 export default class Dashboard extends HTMLElement{
@@ -18,8 +18,7 @@ export default class Dashboard extends HTMLElement{
         this.attachShadow({mode:'open'})
     }
 
-    async connectedCallback(){
-        await firebase.AddUserToDB(credentials)
+     connectedCallback(){
         this.render();
     }
 

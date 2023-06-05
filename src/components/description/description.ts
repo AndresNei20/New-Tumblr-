@@ -1,11 +1,11 @@
 import BtnAct from "../post/btn-actions/btn-act";
 export enum AttributeDesc{
     "description" = "description",
-    "hashtags" = "hashtags"
+    "createdAt" = "createdAt"
 }
 class profileDes extends HTMLElement {
     description?: string;
-    hashtags?: string;
+     createdAt?: string;
     static get observedAttributes(){
      return["description","hashtags"]
     }
@@ -34,7 +34,7 @@ class profileDes extends HTMLElement {
          <link rel="stylesheet" href="../src/components/description/description.css">
          <section class="profile">
          <p>${this.description}</p>
-         <p>${this.hashtags}</p>
+         <p>${this.createdAt}</p>
          <p>0 likes</p>
          <btn-act id="prueba"></btn-act>
          </section>
