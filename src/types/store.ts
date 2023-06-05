@@ -6,10 +6,11 @@ import { Post } from "./Post";
 export type observer = ({render: () => void} & HTMLElement);
 
 export type AppState = {
-    user: User,
+    userCredentials: string,
        posts : Post [];
        favorites: Post [];
        screen: Screens; 
+    userData: User,
 }
 
 export enum NavigationActions{
@@ -17,14 +18,14 @@ export enum NavigationActions{
 }
 
 export enum AuthActions{
-    "LOGIN" = "LOGIN",
+    "ADD_USER" = "ADD_USER",
     "LOGOUT" = "LOGOUT",
-    "REGISTER" = "REGISTER",
     "EDIT" = "EDIT",
+    "SET_USER" = "SET_USER",
 }
 
-export interface LogInAction {
-    action: AuthActions.LOGIN,
+export interface AddUserAction {
+    action: AuthActions.ADD_USER,
     payload: User 
 }
 
@@ -33,14 +34,15 @@ export interface LogOutAction{
     payload: void
 }
 
-export interface RegisterAction{
-    action: AuthActions.REGISTER,
-    payload: User
-}
 
 export interface EditUSerAction{
     action: AuthActions.EDIT,
     payload: User
+}
+
+export interface SetUserAction{
+    action: AuthActions.SET_USER,
+    payload: string
 }
 
 export enum PostActions{
@@ -71,14 +73,11 @@ export interface GetFavoriteAction{
     payload: Post[]
 }
 
-export interface DeletePostAction{
-    action: PostActions.DELETE,
-    payload: void //idk if this gonna work...
-}
-
 export interface NavigateAction{
     action:NavigationActions.NAVIGATE ,
     payload: Screens
 }
 
-export type Actions = LogInAction | LogOutAction | AddPostAction | GetPostAction | DeletePostAction | NavigateAction | AddFavoriteAction | GetFavoriteAction | RegisterAction | EditUSerAction
+
+
+export type Actions = AddUserAction | LogOutAction | AddPostAction | GetPostAction | NavigateAction | AddFavoriteAction | GetFavoriteAction | EditUSerAction | SetUserAction 

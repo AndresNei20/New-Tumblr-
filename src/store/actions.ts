@@ -1,10 +1,11 @@
 import { postdata } from "../components/post/postdata"
 import ApiPostData from "../services/ApiPostData"
-import { AuthActions, LogInAction, LogOutAction, PostActions, AddPostAction, GetPostAction, NavigateAction, NavigationActions, Actions, RegisterAction, EditUSerAction, AddFavoriteAction, GetFavoriteAction } from "../types/store"
+import { AuthActions, LogOutAction, PostActions, AddPostAction, GetPostAction, NavigateAction, NavigationActions, Actions, EditUSerAction, AddFavoriteAction, GetFavoriteAction, SetUserAction, AddUserAction } from "../types/store"
 import { Screens } from "../types/navigation"
 import { User } from "../types/User"
 import firebase from "../utils/firebase"
 import { Post } from "../types/Post"
+import { appState, dispatch } from "."
 
 export const navigate = (screen: Screens): NavigateAction =>{
     return{
@@ -13,28 +14,24 @@ export const navigate = (screen: Screens): NavigateAction =>{
     }
 }
 
-export const LogIn = async(user: User): Promise<LogInAction> => {
-    await firebase.loginUser(user)
-    return{
-        action: AuthActions.LOGIN,
-        payload: user,
-    }
-}
-
-export const Register = async (user: User): Promise<RegisterAction> => {
-    await firebase.registerUser(user);
-    await firebase.AddUserToDB(user);
-
-    return{
-        action: AuthActions.REGISTER,
+export const AddUser = (user: User): AddUserAction => {
+    return {
+        action: AuthActions.ADD_USER,
         payload: user
     }
-}
+} 
 
-export const LogOut = ():LogOutAction => {
+export const LogOut =  ():LogOutAction =>{
+
+    if(appState.userCredentials !==null || ''){
+    dispatch(SetUserCredentials(''))    
+    sessionStorage.clear()
+    dispatch(navigate(Screens.LOGIN))
+    location.reload()
+}
     return{
         action: AuthActions.LOGOUT,
-        payload: undefined
+        payload: undefined,
     }
 }
 
@@ -90,9 +87,9 @@ export const addNewPost = ({payload}: Pick<AddPostAction, "payload">): AddPostAc
     }
 }
 
-export const setUserCredentials = (user: string) => {
+export const SetUserCredentials = (user: string): SetUserAction  => {
     return {
-      action: "SETUSER",
-      payload: user,
-    };
-  };
+        action: AuthActions.SET_USER,
+        payload: user,
+    }
+}

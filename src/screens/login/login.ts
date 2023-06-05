@@ -4,8 +4,6 @@ import { Screens } from "../../types/navigation";
 import firebase from "../../utils/firebase";
 
 const userCredentials = {
-    username: "",
-    birthday: "",
     password: "",
     email: "",
 }
@@ -48,11 +46,11 @@ attributeChangedCallback(
 this.render();
 }
 
-async handleLoginButton() {
+/* async handleLoginButton() {
     firebase.loginUser(userCredentials);
-    console.log(appState.user)
+    console.log(appState.userData)
   }
-
+ */
   changeWindow(){
     dispatch(navigate(Screens.SIGNUP))
   }
@@ -109,11 +107,9 @@ render(){
         const btnLog = this.ownerDocument.createElement('button');
         btnLog.id = "start"
         btnLog.innerText = "Log In"
-        btnLog.addEventListener('click', () => {
+        btnLog.addEventListener('click', async() => {
             console.log('funciono')
-            this.handleLoginButton
-             dispatch(navigate(Screens.DASHBOARD)) 
-
+            await firebase.loginUser(userCredentials)
         })
 
         const btnSign = this.ownerDocument.createElement('button');

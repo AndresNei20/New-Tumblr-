@@ -1,19 +1,32 @@
 import { Screens } from "../types/navigation";
 import { Actions, AppState, observer } from "../types/store";
+import { auth } from "../utils/firebase";
 import storage, { PersistanceKeys } from "../utils/storage";
-import { navigate, setUserCredentials } from "./actions";
+import { SetUserCredentials, navigate } from "./actions";
 import { reducer } from "./reducer";
+import {onAuthStateChanged} from 'firebase/auth'
 
-/* onAuthStateChanged(auth, (user) => {
-  console.log('Entra');
-  console.log('user',user)
+onAuthStateChanged(auth, async(user:any) => {
+  console.log(user)
   if (user) {
-    user.email !== null ? dispatch(setUserCredentials(user.email)) : '';
+    appState.userCredentials !== null ? dispatch(SetUserCredentials(user)): '';
+/*     if (!appState.userData) {
+      appState.userData = {
+        uid:"",
+        username: "",
+        birthday: "",
+        email: "",
+        password: "",
+        img: ""
+      };
+    }   */
+    appState.userData.uid = user.uid
+    appState.userData.email = String(user.email)
     dispatch(navigate(Screens.DASHBOARD));
   } else {
     dispatch(navigate(Screens.LOGIN));
   }
-}); */
+});
 
 const screenState = {
     screen: Screens.LOGIN
@@ -22,26 +35,26 @@ const screenState = {
 
 
 export let emptyState: AppState = {
-    user:{
+    userData:{
         username: "",
         email: "",
         password: "",
         birthday: "",
-        id: "",
+        uid: "",
         img: ""
     },
     posts: [], 
     favorites: [],
-    screen: Screens.LOGIN
+    screen: Screens.LOGIN,
+    userCredentials: "",
+
 }
 
 
-export let appState = emptyState
-/* storage.get<AppState>({
-    key: PersistanceKeys.STORE,
-    defaultValue: emptyState,
-  });
- */
+export let appState = storage.get<AppState>({
+  key: PersistanceKeys.STORE,
+  defaultValue: emptyState,
+});
 
 
 let observers: observer[] = [];

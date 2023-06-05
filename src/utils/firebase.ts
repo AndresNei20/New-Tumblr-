@@ -85,6 +85,17 @@ const GetPostsDB = async(): Promise<Post[]> =>{
   return resp
 }
 
+const GetPostsListener = (cb: (docs: Post[]) => void) => {
+  const q = query(collection(db, "posts"), orderBy("createdAt")); 
+  onSnapshot(q, (collection) => {
+    const docs: Post[] = collection.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    })) as Post[];
+    cb(docs);
+  });
+};
+
 
 const AddUserToDB = async(user: User) => {
   try{
@@ -99,12 +110,12 @@ const AddUserToDB = async(user: User) => {
 
 const EditUserDB = async (user: User) =>{
   try {
-    await setDoc (doc(db, "users", appState.user.id), {
-      id: appState.user.id,
-      username: appState.user.username,
-      email: appState.user.email,
-      password: appState.user.password,
-      img: appState.user.img,
+    await setDoc (doc(db, "users", appState.userData.uid), {
+      id: appState.userData.uid,
+      username: appState.userData.username,
+      email: appState.userData.email,
+      password: appState.userData.password,
+      img: appState.userData.img,
     })
     return true
   } catch (e) {
@@ -115,7 +126,7 @@ const EditUserDB = async (user: User) =>{
 
 const AddFavoriteDB = async (favorite: Post) =>{
   try {
-    const main = collection(db, "users", appState.user.id)
+    const main = collection(db, "users", appState.userData.uid)
   const where = collection(main, "favorites") 
   await addDoc(where,{...favorite, createdAt: new Date()});
     return true
@@ -128,7 +139,7 @@ const AddFavoriteDB = async (favorite: Post) =>{
 const GetFavoritesDB = async(): Promise<Post[]> =>{
   const resp: Post[] = [];
 
-  const main = collection(db, "users", appState.user.id)
+  const main = collection(db, "users", appState.userData.uid)
   const q=query(collection(main,"favorites"), orderBy("createdAt"))
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
@@ -142,7 +153,7 @@ const GetFavoritesDB = async(): Promise<Post[]> =>{
 
 
 const GetFavoritesListener = (cb: (docs: Post[]) => void) => {
-  const main = collection(db, "users", appState.user.id)
+  const main = collection(db, "users", appState.userData.uid)
     const q = query(collection(main, "favorites"), orderBy("createdAt")); 
     onSnapshot(q, (collection) => {
       const docs: Post[] = collection.docs.map((doc) => ({
@@ -165,5 +176,6 @@ export default {
   GetFavoritesDB,
   GetFavoritesListener,
   AddPostDB,
-  GetPostsDB
+  GetPostsDB,
+  GetPostsListener
 };

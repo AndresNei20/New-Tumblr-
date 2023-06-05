@@ -1,13 +1,15 @@
 import { dispatch } from "../../store"
-import { navigate } from "../../store/actions"
+import { AddUser, navigate } from "../../store/actions"
 import { Screens } from "../../types/navigation"
 import firebase from "../../utils/firebase"
 
 const signUpForm = {
+    uid: "",
     username: "",
     birthday: "",
     password: "",
     email: "",
+    img: "",
 }
 
 export enum Attributes {
@@ -56,20 +58,6 @@ attributeChangedCallback(
 }
 this.render();
 }
-
-async handleSignUpBtn(){
-    const user = await firebase.registerUser(signUpForm)
-    console.log(user);
-    
-}
-
-backWindow(){
-    dispatch(navigate(Screens.DASHBOARD))
-}
-
-changeWindow(){
-    dispatch(navigate(Screens.LOGIN))
-};
 
 render(){
     if(this.shadowRoot)this.shadowRoot.innerHTML = ``;
@@ -143,7 +131,16 @@ render(){
     const logBtn = this.ownerDocument.createElement('button')
     logBtn.textContent = "Log In"
     logBtn.id = "start"
-    logBtn.addEventListener('click', this.handleSignUpBtn )
+    logBtn.addEventListener('click', async() => {
+        const user = await firebase.registerUser(signUpForm)
+        dispatch(AddUser(signUpForm))
+        console.log(user);
+        if(user){
+            dispatch(navigate(Screens.LOGIN))
+            sessionStorage.clear()
+        }
+    } )
+    
 
     this.shadowRoot?.appendChild(css);
     dataInput.appendChild(userInp);

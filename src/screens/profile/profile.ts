@@ -1,5 +1,15 @@
 import '../../components/export'
+import { appState, dispatch } from '../../store';
+import { LogOut } from '../../store/actions';
 
+const credentials = {
+    uid: appState.userData.uid,
+    username: "",
+    email: appState.userData.email,
+    password: appState.userData.password,
+    img: "",
+    birthday: ""
+}
 export default class Profile extends HTMLElement{
 
     constructor(){
@@ -103,7 +113,7 @@ export default class Profile extends HTMLElement{
         signOutBtn.className = "signOutBtn";
         signOutBtn.innerText = "Sign Out";
         signOutBtn.addEventListener('click', () => {
-            
+            dispatch(LogOut())
         })
         back_div.appendChild(signOutBtn)
 

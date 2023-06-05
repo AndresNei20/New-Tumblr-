@@ -47,19 +47,19 @@ export default class Forms extends HTMLElement {
  
      sentValuesImg(e: any){
         console.log("change")
-        customPost.img = e.target.value
+/*         customPost.img = e.target.value */
      }
      sentValueDes(e:any){
-        customPost.description = e.target.value;
+/*         customPost.description = e.target.value; */
      }
      sentValueHash(e:any){
-        customPost.hashtags = e.target.value
+/*         customPost.hashtags = e.target.value */
      }
 
      submitForm(){
-        dispatch(
+/*         dispatch(
             addNewPost({payload: customPost})
-        )
+        ) */
      }
 
      render(){

@@ -4,7 +4,7 @@ import { GetPost } from '../../store/actions';
 import { GetPostAction, PostActions } from '../../types/store';
 import '../export'
 
-console.log (await ApiPostData.get());
+/* console.log (await ApiPostData.get()); */
 
 export enum AttributeImg{
     "image" = "image"
@@ -20,9 +20,8 @@ export default class NewPost extends HTMLElement {
         this.attachShadow({mode:'open'})
     }
 
-   async connectedCallback(){
-/*     const action = await getPosts()
-        dispatch(action); */ 
+   connectedCallback(){
+    this.render()
     }
 
     attributeChangedCallback(propName: AttributeImg, oldValue: string | undefined, newValue: string | undefined){
