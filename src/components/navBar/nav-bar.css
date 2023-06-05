@@ -12,33 +12,8 @@ nav{position: fixed;}
 }
 
 
-@media all and (max-width:500px){
-    nav{
-        top: 97%;
-    }
-    nav input {
-        display: none;
-    }
-    #navback{
-        height: 20%;
-        top: 90%;
-        margin-top: 90%;
-        z-index: 1;
-    }
-    .logo{
-        display: none;
-    }
-    btn-list {
-     /*    width: 40em; */
-        width: 55%;
-        height: 40px;
-        display: flex;
-        flex-direction: row;
-        margin-left: 19%;
-        margin-top: 1%;
-        justify-content: center;
-    }
-}
+
+
 #navBack{
     display: flex;
     flex-direction: row;
@@ -72,3 +47,31 @@ btn-list{
 btn-list button{
     width: 100%;
 }
+
+@media all and (max-width:500px){
+    nav{
+        top: 97%;
+    }
+    nav input {
+        display: none;
+    }
+    #navback{
+        height: 20%;
+        margin-top: 80%;
+        z-index: 1;
+    }
+    .logo{
+        display: none;
+    }
+    btn-list {
+ 
+        width: 70%;
+        height: 50px;
+        display: flex;
+        flex-direction: row;
+        margin-top: 1%;
+        margin-left: 10%;
+        margin-bottom: 4%;
+        align-items:baseline;
+        justify-content: baseline;
+    }}
