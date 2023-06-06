@@ -1,16 +1,17 @@
 import '../../components/export'
 import { appState, dispatch } from '../../store';
-import { LogOut, SetUserCredentials, navigate } from '../../store/actions';
+import { LogOut, SetUserCredentials, navigate, Edit } from '../../store/actions';
 import { Screens } from '../../types/navigation';
+import firebase from '../../utils/firebase';
 
-/* const credentials = {
+const credentials = {
     uid: appState.userData.uid ,
     username: "",
     email: appState.userData.email,
     password: appState.userData.password,
     img: "",
-    birthday: ""
-} */
+    birthday: appState.userData.birthday
+}
 export default class Profile extends HTMLElement{
 
     constructor(){
@@ -40,14 +41,14 @@ export default class Profile extends HTMLElement{
         bot_section.className = "sectionWhite"
 
         const profilePic = this.ownerDocument.createElement('img')
-        profilePic.src = `https://newprofilepic2.photo-cdn.net//assets/images/article/profile.jpg`
+        profilePic.src = `https://api.time.com/wp-content/uploads/2014/11/140372563.jpg?quality=85&w=3780`
         bot_section.appendChild(profilePic)
         const userName = this.ownerDocument.createElement('h3')
-        userName.innerText = "@Paola"
+        userName.innerText = "@" + appState.userData.username
         userName.className = "userName"
         bot_section.appendChild(userName)
         const userDesc = this.ownerDocument.createElement('p')
-        userDesc.innerText = "My Name is Paola"
+        userDesc.innerText = "My name is " + appState.userData.username
         bot_section.appendChild(userDesc)
 
         const whiteSection = this.ownerDocument.createElement('section');
@@ -56,14 +57,14 @@ export default class Profile extends HTMLElement{
         const subTittle = this.ownerDocument.createElement('h3')
         subTittle.innerText = "Username"
         const inputOne = this.ownerDocument.createElement('input')
-        inputOne.placeholder = 'Paola'
+        inputOne.placeholder = appState.userData.username
         bot_section.appendChild(subTittle)
         bot_section.appendChild(inputOne)
         
         const subTittle2 = this.ownerDocument.createElement('h3')
         subTittle2.innerText = "Email"
         const inputTwo = this.ownerDocument.createElement('input')
-        inputTwo.placeholder = 'Paola@gmail.com'
+        inputTwo.placeholder = appState.userData.email
         bot_section.appendChild(subTittle2)
         bot_section.appendChild(inputTwo)
         
@@ -107,6 +108,9 @@ export default class Profile extends HTMLElement{
         const saveChangesBtn = this.ownerDocument.createElement('button')
         saveChangesBtn.innerText = "Save" 
         saveChangesBtn.className = "btnSave"
+        saveChangesBtn.addEventListener('click',async () => {
+            dispatch(await Edit(credentials))
+        })
         bot_section.appendChild(saveChangesBtn)
         this.shadowRoot?.appendChild(back_div)
 
@@ -116,13 +120,7 @@ export default class Profile extends HTMLElement{
         signOutBtn.addEventListener('click', () => {
             if(appState.userCredentials !==null || ''){
                 dispatch(SetUserCredentials(''))    
-                appState.userData = {   
-                 username: "",
-                email: "",
-                password: "",
-                birthday: "",
-                uid: "",
-                img: ""}
+               localStorage.clear()
                 sessionStorage.clear()
                 dispatch(navigate(Screens.LOGIN))
                 location.reload()

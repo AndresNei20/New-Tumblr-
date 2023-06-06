@@ -58,7 +58,7 @@ export default class NewPost extends HTMLElement {
          appState.posts.forEach((p)=>{
              console.log(p);
              newpost += `
-             <new-prof image ="${p.username}" id="${p.id}" ></new-prof>
+             <new-prof image ="${p.id}}" id="${p.username}" ></new-prof>
              <img src="${p.img}"></img>    
              <new-des description ="${p.description}" createdAt = "${p.createdAt}" "Pretty boy"></new-des>                                 //revisar como hacer el createdAt
              `                                  

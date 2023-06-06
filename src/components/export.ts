@@ -12,3 +12,4 @@ export {default as MessangerScreen} from "../screens/messanges/messages"
 export {default as MssgInputBar} from "./message-bar/message-bar"
 export {default as MssgBox} from "./mssgbox/mssg"
 export {default as SideMenu} from "./sidemenu/sidemenu"
+export {default as BtnFav} from '../btn_fav/btn_fav'

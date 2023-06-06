@@ -138,8 +138,9 @@ render(){
         dispatch(AddUser(signUpForm))
         console.log(user);
         if(user){
-            dispatch(navigate(Screens.LOGIN))
+            dispatch(navigate(Screens.DASHBOARD))
             sessionStorage.clear()
+            location.reload()
         }
     } )
     

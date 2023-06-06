@@ -35,10 +35,16 @@ class profileDes extends HTMLElement {
          <section class="profile">
          <p class="description">${this.description}</p>
          <p>${this.createdAt}</p>
-         <p>0 likes</p>
+         <p>new post!</p>
          <btn-act id="prueba"></btn-act>
+         <btn_fav></btn_fav>
          </section>
          `
+         const btn_fav = this.ownerDocument.createElement('button');
+         btn_fav.innerText = "Favorite"
+ 
+         this.shadowRoot?.appendChild(btn_fav)
+         
      }
     
  }
