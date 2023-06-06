@@ -36,17 +36,12 @@ class InputBar extends HTMLElement {
         if(this.shadowRoot)this.shadowRoot.innerHTML = `link rel="stylesheet" href="../src/components/input-bar/input-bar.css`
         let inputscont = "";
 
-        dataicons.forEach((dataicons,index: number)=>{
-            inputscont += `
-           <div id="btn-box>
-            <button id="inp${index}"><img class="options" src="${dataicons.icon}"></button>
-            <p>${dataicons.tag}</p>
-            </div>
-            `})
+       
+
             if(this.shadowRoot)this.shadowRoot.innerHTML = `
             <link rel="stylesheet" href="../src/components/input-bar/input-bar.css">
             <section id="containerbtn">
-                <img id="profpic" src="https://api.time.com/wp-content/uploads/2014/11/140372563.jpg?quality=85&w=3780">
+                
               <div id="btn_box">  ${inputscont}</div>
             </section>
             `
@@ -79,7 +74,8 @@ class InputBar extends HTMLElement {
                 imgText.className = "options"
                 imgText.src = "../../../img/font.png" 
                 btnText.appendChild(imgText)
-            const pText = this.ownerDocument.createElement('p')
+          
+                const pText = this.ownerDocument.createElement('p')
             pText.textContent = "Text"
 
             divBox1.appendChild(btnText)
@@ -159,6 +155,7 @@ class InputBar extends HTMLElement {
                 popUp.className = 'createPostPopUp'
 
                 const inputImg = this.ownerDocument.createElement('input');
+                inputImg.id="inputimg"
                 inputImg.type = "file"
                 inputImg.placeholder = "Upload File"
                 inputImg.addEventListener("change", async () =>{
@@ -175,6 +172,7 @@ class InputBar extends HTMLElement {
                 popUp.appendChild(inputImg);
                 
                 const inputDes = this.ownerDocument.createElement('input');
+                inputDes.id = "inputext"
                 inputDes.type = "text"
                 inputDes.placeholder = "Add some description"
                 inputDes.addEventListener('change', (e:any) => {
@@ -185,6 +183,7 @@ class InputBar extends HTMLElement {
 
                 const btnClose = this.ownerDocument.createElement('button');
                 btnClose.textContent = "Close"
+                btnClose.id="submit1"
                 btnClose.addEventListener('click',() => {
                     popUp.style.display = 'none';
                     capa.style.display = 'none';
@@ -193,6 +192,7 @@ class InputBar extends HTMLElement {
                 )
                 popUp.appendChild(btnClose)
                 const btnPost = this.ownerDocument.createElement('button');
+                btnPost.id="submit2"
                 btnPost.textContent = "Post"
                 btnPost.addEventListener('click', async() => {
                     popUp.style.display = 'none';
