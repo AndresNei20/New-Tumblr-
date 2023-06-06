@@ -72,7 +72,7 @@ class InputBar extends HTMLElement {
                 })
                 const imgText = this.ownerDocument.createElement('img')
                 imgText.className = "options"
-                imgText.src = "../../../img/font.png" 
+                imgText.src = "../img/font.png" 
                 btnText.appendChild(imgText)
           
                 const pText = this.ownerDocument.createElement('p')
@@ -92,7 +92,7 @@ class InputBar extends HTMLElement {
                 })
                 const imgPhoto = this.ownerDocument.createElement('img')
                 imgPhoto.className = "options"
-                imgPhoto.src = "../../../img/photo.png" 
+                imgPhoto.src = "../img/photo.png" 
                 btnPhoto.appendChild(imgPhoto)
             const pPhoto = this.ownerDocument.createElement('p')
             pPhoto.textContent = "Photo"
@@ -106,7 +106,7 @@ class InputBar extends HTMLElement {
                 btnQuote.id = "inp2"
                 const imgQuote = this.ownerDocument.createElement('img')
                 imgQuote.className = "options"
-                imgQuote.src = "../../../img/quote.png" 
+                imgQuote.src = "../img/quote.png" 
                 btnQuote.appendChild(imgQuote)
                 btnQuote.addEventListener('click', () => {
                     console.log('it works')
@@ -130,7 +130,7 @@ class InputBar extends HTMLElement {
                 })
                 const imgAudio = this.ownerDocument.createElement('img')
                 imgAudio.className = "options"
-                imgAudio.src = "../../../img/audio.png" 
+                imgAudio.src = "../img/audio.png" 
                 btnAudio.appendChild(imgAudio)
             const pAudio = this.ownerDocument.createElement('p')
             pAudio.textContent = "Audio"
@@ -144,7 +144,7 @@ class InputBar extends HTMLElement {
                 btnVideo.id = "inp4"
                 const imgVideo = this.ownerDocument.createElement('img')
                 imgVideo.className = "options"
-                imgVideo.src = "../../../img/video.png" 
+                imgVideo.src = "../img/video.png" 
                 btnVideo.appendChild(imgVideo)
                 btnVideo.addEventListener('click', () => {
                     console.log('it works')

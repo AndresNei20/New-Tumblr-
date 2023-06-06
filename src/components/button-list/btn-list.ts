@@ -52,7 +52,7 @@ class BtnList extends HTMLElement {
             dispatch(navigate(Screens.DASHBOARD))
         })
         const imgHome = this.ownerDocument.createElement('img');
-        imgHome.src = "../../../img/home-icon-btn.png"
+        imgHome.src = "../img/home-icon-btn.png"
         btnHome.appendChild(imgHome)
 
 
@@ -62,14 +62,14 @@ class BtnList extends HTMLElement {
             dispatch(navigate(Screens.MESSAGES))
         })
         const imgMsm = this.ownerDocument.createElement('img');
-        imgMsm.src = "../../../img/mail-btn.png"
+        imgMsm.src = "../img/mail-btn.png"
         btnMsm.appendChild(imgMsm)
 
 
         const btnSearch = this.ownerDocument.createElement('button');
         btnSearch.id = "btn2"
         const imgSearch = this.ownerDocument.createElement('img');
-        imgSearch.src = "../../../img/search-icon-btn.png"
+        imgSearch.src = "../img/search-icon-btn.png"
         btnSearch.appendChild(imgSearch)
 
 
@@ -79,14 +79,14 @@ class BtnList extends HTMLElement {
             dispatch(navigate(Screens.PROFILE))
         })
         const imgProfile = this.ownerDocument.createElement('img');
-        imgProfile.src = "../../../img/user-btn.png"
+        imgProfile.src = "../img/user-btn.png"
         btnProfile.appendChild(imgProfile)
 
 
         const btnCreateP = this.ownerDocument.createElement('button');
         btnCreateP.id = "btn4"
         const imgCreateP = this.ownerDocument.createElement('img');
-        imgCreateP.src = "../../../img/post.png"
+        imgCreateP.src = "../img/post.png"
         imgCreateP.addEventListener('click', () => {
             console.log('it works')
             popUp.style.display = 'flex';

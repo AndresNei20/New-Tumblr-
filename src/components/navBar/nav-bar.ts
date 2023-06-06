@@ -33,7 +33,7 @@ class NavBar extends HTMLElement{
 
         if(this.shadowRoot)this.shadowRoot.innerHTML += `
         <nav id="navBack">
-            <img class="logo" src="../../../img/tumblr-1.png">
+            <img class="logo" src="../img/tumblr-1.png">
             <btn-list></btn-list>
         </nav>
         `
