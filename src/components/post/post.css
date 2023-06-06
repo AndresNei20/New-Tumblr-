@@ -27,6 +27,7 @@ new-prof{
 @media all and (max-width:440px){
     .post img{
         width:100% ;
+        margin-left: 0;
     }
     new-des{
         width: 3em;

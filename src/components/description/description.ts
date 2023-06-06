@@ -33,7 +33,7 @@ class profileDes extends HTMLElement {
          this.shadowRoot.innerHTML = `
          <link rel="stylesheet" href="../src/components/description/description.css">
          <section class="profile">
-         <p>${this.description}</p>
+         <p class="description">${this.description}</p>
          <p>${this.createdAt}</p>
          <p>0 likes</p>
          <btn-act id="prueba"></btn-act>

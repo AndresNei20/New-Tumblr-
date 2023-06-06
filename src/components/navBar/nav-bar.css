@@ -58,6 +58,7 @@ btn-list button{
     #navback{
         height: 20%;
         margin-top: 80%;
+        width: 100%;
         z-index: 1;
     }
     .logo{
