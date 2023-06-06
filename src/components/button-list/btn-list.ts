@@ -1,11 +1,18 @@
 import { addObserver, dispatch } from "../../store";
-import { navigate } from "../../store/actions";
+import { AddPost, navigate } from "../../store/actions";
 import { Screens } from "../../types/navigation";
+import firebase from "../../utils/firebase";
 import imagedata from "./imagedata";
 export enum AttributeIcon{
     "icon" = "icon"
 }
-
+const formData = {
+    id: "",
+    img: "",
+    username: "",
+    description: "",
+    createdAt: "",
+}
 class BtnList extends HTMLElement {
     icon?:string
    static get observedAttributes(){
@@ -80,6 +87,10 @@ class BtnList extends HTMLElement {
         btnCreateP.id = "btn4"
         const imgCreateP = this.ownerDocument.createElement('img');
         imgCreateP.src = "../../../img/post.png"
+        imgCreateP.addEventListener('click', () => {
+            console.log('it works')
+            popUp.style.display = 'flex';
+            capa.style.display = 'flex';})
         btnCreateP.appendChild(imgCreateP)
 
 
@@ -100,6 +111,65 @@ class BtnList extends HTMLElement {
         iconsNav.appendChild(btnCreateP)
         this.shadowRoot?.appendChild(iconsNav);
 
+         //Pop Up
+
+         const capa = this.ownerDocument.createElement('section');
+         capa.className = "capa";
+         this.shadowRoot?.appendChild(capa)
+
+         const popUp = this.ownerDocument.createElement('section');
+         popUp.className = 'createPostPopUp'
+
+         const inputImg = this.ownerDocument.createElement('input');
+         inputImg.id="inputimg"
+         inputImg.type = "file"
+         inputImg.placeholder = "Upload File"
+         inputImg.addEventListener("change", async () =>{
+             const file = inputImg.files?.[0];
+             if (file) await firebase.uploadFile(file);
+             console.log(file?.name);
+             if (file) {
+               const img = await firebase.getFile(file.name);
+               console.log("img", img);
+               const src = String(img)
+                formData.img = src 
+           }
+           });
+         popUp.appendChild(inputImg);
+         
+         const inputDes = this.ownerDocument.createElement('input');
+         inputDes.id = "inputext"
+         inputDes.type = "text"
+         inputDes.placeholder = "Add some description"
+         inputDes.addEventListener('change', (e:any) => {
+             formData.description = e.target.value
+             console.log(formData)
+         })
+         popUp.appendChild(inputDes);
+
+         const btnClose = this.ownerDocument.createElement('button');
+         btnClose.textContent = "Close"
+         btnClose.id="submit1"
+         btnClose.addEventListener('click',() => {
+             popUp.style.display = 'none';
+             capa.style.display = 'none';
+         }
+         
+         )
+         popUp.appendChild(btnClose)
+         const btnPost = this.ownerDocument.createElement('button');
+         btnPost.id="submit2"
+         btnPost.textContent = "Post"
+         btnPost.addEventListener('click', async() => {
+             popUp.style.display = 'none';
+             capa.style.display = 'none';
+             dispatch(await AddPost(formData))
+         })
+         popUp.appendChild(btnPost)
+
+
+         this.shadowRoot?.appendChild(popUp)
+ 
     }
 }
 customElements.define('btn-list', BtnList)

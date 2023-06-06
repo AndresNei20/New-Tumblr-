@@ -130,12 +130,6 @@ export default class Profile extends HTMLElement{
         })
         back_div.appendChild(signOutBtn)
 
-        const deleteBtn = this.ownerDocument.createElement('button');
-        deleteBtn.className = "deleteBtn";
-        deleteBtn.innerText = "Delete Account";
-        back_div.appendChild(deleteBtn)
-
-
 
     }
 }

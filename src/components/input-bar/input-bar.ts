@@ -66,7 +66,7 @@ class InputBar extends HTMLElement {
                 const btnText = this.ownerDocument.createElement('button')
                 btnText.id = "inp0"
                 btnText.addEventListener('click', () => {
-                    console.log('it works')
+/*                     console.log('it works') */
                     popUp.style.display = 'flex';
                     capa.style.display = 'flex';
                 })
@@ -85,6 +85,11 @@ class InputBar extends HTMLElement {
             divBox2.id = "btn-box";
                 const btnPhoto = this.ownerDocument.createElement('button')
                 btnPhoto.id = "inp1"
+                btnPhoto.addEventListener('click', () => {
+                    console.log('it works')
+                    popUp.style.display = 'flex';
+                    capa.style.display = 'flex';
+                })
                 const imgPhoto = this.ownerDocument.createElement('img')
                 imgPhoto.className = "options"
                 imgPhoto.src = "../../../img/photo.png" 
@@ -103,6 +108,11 @@ class InputBar extends HTMLElement {
                 imgQuote.className = "options"
                 imgQuote.src = "../../../img/quote.png" 
                 btnQuote.appendChild(imgQuote)
+                btnQuote.addEventListener('click', () => {
+                    console.log('it works')
+                    popUp.style.display = 'flex';
+                    capa.style.display = 'flex';
+                })
             const pQuote = this.ownerDocument.createElement('p')
             pQuote.textContent = "Quote"
 
@@ -113,6 +123,11 @@ class InputBar extends HTMLElement {
             divBox4.id = "btn-box";
                 const btnAudio = this.ownerDocument.createElement('button')
                 btnAudio.id = "inp3"
+                btnAudio.addEventListener('click', () => {
+                    console.log('it works')
+                    popUp.style.display = 'flex';
+                    capa.style.display = 'flex';
+                })
                 const imgAudio = this.ownerDocument.createElement('img')
                 imgAudio.className = "options"
                 imgAudio.src = "../../../img/audio.png" 
@@ -131,6 +146,11 @@ class InputBar extends HTMLElement {
                 imgVideo.className = "options"
                 imgVideo.src = "../../../img/video.png" 
                 btnVideo.appendChild(imgVideo)
+                btnVideo.addEventListener('click', () => {
+                    console.log('it works')
+                    popUp.style.display = 'flex';
+                    capa.style.display = 'flex';
+                })
             const pVideo = this.ownerDocument.createElement('p')
             pVideo.textContent = "Video"
 
